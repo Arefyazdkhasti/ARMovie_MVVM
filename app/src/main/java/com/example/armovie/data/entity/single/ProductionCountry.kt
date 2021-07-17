@@ -1,4 +1,4 @@
-package com.example.armovie.data.entity
+package com.example.armovie.data.entity.single
 
 
 import com.google.gson.annotations.SerializedName

@@ -1,9 +1,9 @@
-package com.example.armovie.data.entity
+package com.example.armovie.data.entity.single
 
 
 import com.google.gson.annotations.SerializedName
 
-data class movie(
+data class movieDetail(
     //@SerializedName("adult")
     //val adult: Boolean,
     @SerializedName("backdrop_path")
