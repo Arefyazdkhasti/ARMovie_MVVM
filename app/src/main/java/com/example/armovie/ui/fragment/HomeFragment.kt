@@ -2,18 +2,29 @@ package com.example.armovie.ui.fragment
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.armovie.data.network.ConnectivityInterceptorImpl
-import com.example.armovie.data.network.TMDBApiService
-import com.example.armovie.databinding.HomeFragmentBinding
-import com.example.armovie.ui.viewModel.HomeViewModel
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.armovie.data.entity.list.movieItem
 
-class HomeFragment : Fragment() {
+import com.example.armovie.databinding.HomeFragmentBinding
+import com.example.armovie.ui.base.ScopedFragment
+import com.example.armovie.ui.itemRecyclerView.MovieItemRecyclerView
+import com.example.armovie.ui.viewModel.HomeViewModel
+import com.example.armovie.ui.viewModel.HomeViewModelFactory
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.GroupieViewHolder
+import kotlinx.coroutines.launch
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.closestKodein
+import org.kodein.di.generic.instance
+
+class HomeFragment : ScopedFragment(), KodeinAware {
+
+    override val kodein by closestKodein()
+    private val viewModelFactory: HomeViewModelFactory by instance()
 
     private lateinit var viewModel: HomeViewModel
 
@@ -31,15 +42,43 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewModel = ViewModelProvider(this,viewModelFactory).get(HomeViewModel::class.java)
 
-        val api = TMDBApiService(ConnectivityInterceptorImpl(this.requireContext()))
+        bindUI()
+        /*val api = TMDBApiService(ConnectivityInterceptorImpl(this.requireContext()))
         GlobalScope.launch {
             val test = api.getPopularMovie(1).await()
             println("TEST ==> $test")
+        }*/
+
+    }
+
+    private fun bindUI() = launch {
+        val movieList = viewModel.movieListEntry.await()
+
+        movieList.observe(viewLifecycleOwner, Observer {
+            if (it == null) return@Observer
+
+            binding?.groupLoading?.visibility = View.GONE
+
+            initRecyclerView(it.results.toMovieItems())
+
+        })
+    }
+
+    private fun initRecyclerView(items: List<MovieItemRecyclerView>) {
+        val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
+            addAll(items)
         }
 
+        binding?.recyclerView?.apply{
+            adapter = groupAdapter
+            layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        }
+    }
+
+    private fun List<movieItem>.toMovieItems() : List<MovieItemRecyclerView> = this.map {
+        MovieItemRecyclerView(it)
     }
 
     override fun onDestroyView() {

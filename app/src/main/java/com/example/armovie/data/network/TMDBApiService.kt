@@ -13,8 +13,8 @@ import retrofit2.http.Query
 
 const val API_VERSION = 3
 const val API_KEY = "cfbf3d30a57bf3a59b1fd9c68e829f1d"
-private const val BASE_URL_MOVIE = "https://api.themoviedb.org/"
-private const val BASE_IMAGE_MOVIE = "https://image.tmdb.org/t/p/w185/"
+const val BASE_URL_MOVIE = "https://api.themoviedb.org/"
+const val BASE_IMAGE_MOVIE = "https://image.tmdb.org/t/p/w185/"
 
 interface TMDBApiService {
 
