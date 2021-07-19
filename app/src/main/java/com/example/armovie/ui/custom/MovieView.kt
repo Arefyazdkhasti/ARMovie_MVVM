@@ -3,15 +3,17 @@ package com.example.armovie.ui.custom
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
+import android.widget.ProgressBar
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cooltechworks.views.shimmer.ShimmerRecyclerView
 import com.example.armovie.R
 import com.example.armovie.data.entity.list.movieItem
-import com.example.armovie.ui.adpter.RecyclerItemMovieAdapter
 import com.example.armovie.ui.itemRecyclerView.MovieItemRecyclerView
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
+import kotlinx.android.synthetic.main.home_fragment.view.*
 
 
 class MovieView(
@@ -21,7 +23,7 @@ class MovieView(
 
     private val listTitle: AppCompatTextView
     private val seeAll: AppCompatTextView
-    private val movieRecycleView: RecyclerView
+    private val movieRecycleView: ShimmerRecyclerView
 
     companion object{
         const val TITLE_KEY="title"
@@ -38,9 +40,9 @@ class MovieView(
         typedArray.recycle()
 
 
-        listTitle=view.findViewById(R.id.text_product_title)
-        seeAll=view.findViewById(R.id.text_product_all)
-        movieRecycleView=view.findViewById(R.id.product_recyclerView)
+        listTitle=view.findViewById(R.id.movie_type)
+        seeAll=view.findViewById(R.id.movie_type_see_all)
+        movieRecycleView=view.findViewById(R.id.movie_recyclerView)
 
         listTitle.text=title
 
@@ -56,6 +58,7 @@ class MovieView(
 
     fun initRecycler(data:List<movieItem>, type:String){
 
+        movieRecycleView.showShimmerAdapter()
         /*seeAll.setOnClickListener{
             context.startActivity<ArchiveActivity>(
                 TITLE_KEY to listTitle.text.toString(),
@@ -71,5 +74,13 @@ class MovieView(
             layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         }
 
+    }
+
+    fun hideShimmer(){
+        movieRecycleView.hideShimmerAdapter()
+    }
+
+    fun showShimmer(){
+        movieRecycleView.showShimmerAdapter()
     }
 }

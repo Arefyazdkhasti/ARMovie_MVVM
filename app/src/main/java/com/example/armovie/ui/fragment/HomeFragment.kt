@@ -54,21 +54,21 @@ class HomeFragment : ScopedFragment(), KodeinAware {
     }
 
     private fun bindUI() = launch {
+        binding?.popularRecyclerView?.showShimmer()
+
         val movieList = viewModel.movieListEntry.await()
 
         movieList.observe(viewLifecycleOwner, Observer {
             if (it == null) return@Observer
 
             binding?.groupLoading?.visibility = View.GONE
+            binding?.popularRecyclerView?.hideShimmer()
 
             initRecyclerView1(it.results/*.toMovieItems()*/)
 
         })
     }
 
-    private fun initRecyclerView2(items: List<MovieItemRecyclerView>) {
-
-    }
 
     private fun initRecyclerView1(items: List<movieItem>) {
         binding?.popularRecyclerView?.initRecycler(items,"popular")
