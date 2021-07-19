@@ -20,8 +20,9 @@ class MovieItemRecyclerView(private val movieItem: movieItem): Item<GroupieViewH
             .load(BASE_IMAGE_MOVIE + movieItem.posterPath)
             .into(viewHolder.itemView.movie_image)
 
-        viewHolder.itemView.movie_name_text_view.text = movieItem.title
-        println("title : ${movieItem.title}")
+        viewHolder.itemView.movie_image.clipToOutline = true
+        viewHolder.itemView.movie_name.text = movieItem.title
+
     }
 
 

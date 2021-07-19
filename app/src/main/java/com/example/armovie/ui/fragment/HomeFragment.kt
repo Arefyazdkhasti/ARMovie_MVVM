@@ -61,25 +61,21 @@ class HomeFragment : ScopedFragment(), KodeinAware {
 
             binding?.groupLoading?.visibility = View.GONE
 
-            initRecyclerView(it.results.toMovieItems())
+            initRecyclerView1(it.results/*.toMovieItems()*/)
 
         })
     }
 
-    private fun initRecyclerView(items: List<MovieItemRecyclerView>) {
-        val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
-            addAll(items)
-        }
+    private fun initRecyclerView2(items: List<MovieItemRecyclerView>) {
 
-        binding?.recyclerView?.apply{
-            adapter = groupAdapter
-            layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
-        }
     }
 
-    private fun List<movieItem>.toMovieItems() : List<MovieItemRecyclerView> = this.map {
-        MovieItemRecyclerView(it)
+    private fun initRecyclerView1(items: List<movieItem>) {
+        binding?.popularRecyclerView?.initRecycler(items,"popular")
+
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
