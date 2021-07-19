@@ -4,10 +4,15 @@ import androidx.lifecycle.LiveData
 import com.example.armovie.data.entity.list.movieList
 
 interface MovieNetworkDataSource {
-    val movieList : LiveData<movieList>
 
-    suspend fun fetchMovieList(
-        type:String
-    )
+    val popularMovieList : LiveData<movieList>
+    suspend fun fetchPopularMovieList()
+
+    val nowPlayingMovieList : LiveData<movieList>
+    suspend fun fetchNowPlayingMovieList()
+
+
+    val upcomingMovieList : LiveData<movieList>
+    suspend fun fetchUpcomingMovieList()
 
 }

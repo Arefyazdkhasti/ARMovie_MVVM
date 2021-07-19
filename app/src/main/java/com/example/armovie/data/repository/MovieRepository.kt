@@ -5,5 +5,9 @@ import com.example.armovie.data.entity.list.movieList
 
 interface MovieRepository {
 
-    suspend fun getMostSpecificMovieList(type:String): LiveData<movieList>
+    suspend fun getPopularMovieList(): LiveData<movieList>
+
+    suspend fun getNowPlayingMovieList(): LiveData<movieList>
+
+    suspend fun getUpcomingMovieList(): LiveData<movieList>
 }

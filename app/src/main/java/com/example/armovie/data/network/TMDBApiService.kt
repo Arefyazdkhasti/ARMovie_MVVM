@@ -22,14 +22,20 @@ interface TMDBApiService {
     //https://api.themoviedb.org/3/movie/popular?page=1&api_key=cfbf3d30a57bf3a59b1fd9c68e829f1d
 
     @GET("/$API_VERSION/movie/popular")
-    fun getPopularMovie(
+    fun getPopularMovieAsync(
         @Query("page") page: Int
     ): Deferred<movieList>
 
     @GET("/$API_VERSION/movie/now_playing")
-    fun getNowPlayingMovie(
+    fun getNowPlayingMovieAsync(
         @Query("page") page: Int
     ): Deferred<movieList>
+
+    @GET("/$API_VERSION/movie/upcoming")
+    fun getUpcomingMovieAsync(
+        @Query("page") page: Int
+    ): Deferred<movieList>
+
 
     companion object {
         operator fun invoke(

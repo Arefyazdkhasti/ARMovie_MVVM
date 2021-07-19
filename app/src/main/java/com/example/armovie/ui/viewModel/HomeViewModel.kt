@@ -8,7 +8,14 @@ class HomeViewModel(
     private val movieRepository: MovieRepository
 ) : ViewModel() {
 
-    val movieListEntry by lazyDeferred{
-            movieRepository.getMostSpecificMovieList("popular")
+    val popularMovieListEntry by lazyDeferred{
+            movieRepository.getPopularMovieList()
+    }
+
+    val nowPlayingMovieListEntry by lazyDeferred{
+        movieRepository.getNowPlayingMovieList()
+    }
+    val upcomingMovieListEntry by lazyDeferred{
+        movieRepository.getUpcomingMovieList()
     }
 }
