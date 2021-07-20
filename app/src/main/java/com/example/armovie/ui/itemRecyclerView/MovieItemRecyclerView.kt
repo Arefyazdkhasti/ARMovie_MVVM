@@ -18,12 +18,16 @@ class MovieItemRecyclerView(private val movieItem: movieItem): Item<GroupieViewH
 
         GlideApp.with(viewHolder.itemView)
             .load(BASE_IMAGE_MOVIE + movieItem.posterPath)
+            .placeholder(R.drawable.load)
             .into(viewHolder.itemView.movie_image)
+
 
         viewHolder.itemView.movie_image.clipToOutline = true
         viewHolder.itemView.movie_name.text = movieItem.title
 
     }
+
+    fun getMovieId() = movieItem.id
 
 
 }

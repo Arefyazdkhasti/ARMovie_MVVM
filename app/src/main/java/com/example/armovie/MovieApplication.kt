@@ -10,14 +10,12 @@ import com.example.armovie.data.network.response.MovieNetworkDataSourceImpl
 import com.example.armovie.data.repository.MovieRepository
 import com.example.armovie.data.repository.MovieRepositoryImpl
 import com.example.armovie.ui.viewModel.HomeViewModelFactory
+import com.example.armovie.ui.viewModel.MovieDetailViewModelFactory
 import com.jakewharton.threetenabp.AndroidThreeTen
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.instance
-import org.kodein.di.generic.provider
-import org.kodein.di.generic.singleton
+import org.kodein.di.generic.*
 
 class MovieApplication: Application(),KodeinAware{
     override val kodein = Kodein.lazy {
@@ -28,6 +26,7 @@ class MovieApplication: Application(),KodeinAware{
         bind<MovieNetworkDataSource>() with singleton { MovieNetworkDataSourceImpl(instance()) }
         bind<MovieRepository>() with singleton { MovieRepositoryImpl(instance())}
         bind() from provider { HomeViewModelFactory(instance()) }
+        bind() from factory() { movieId:Int -> MovieDetailViewModelFactory(movieId,instance()) }
     }
     override fun onCreate() {
         super.onCreate()

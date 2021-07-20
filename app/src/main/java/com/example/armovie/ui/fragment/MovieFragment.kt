@@ -30,4 +30,6 @@ class MovieFragment : Fragment() {
         // TODO: Use the ViewModel
     }
 
+
+
 }

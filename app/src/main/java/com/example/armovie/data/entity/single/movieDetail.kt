@@ -1,8 +1,11 @@
 package com.example.armovie.data.entity.single
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class movieDetail(
     //@SerializedName("adult")
     //val adult: Boolean,
@@ -54,4 +57,4 @@ data class movieDetail(
     val voteAverage: Double,
     @SerializedName("vote_count")
     val voteCount: Int
-)
+):Parcelable

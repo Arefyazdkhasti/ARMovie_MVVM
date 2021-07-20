@@ -11,20 +11,27 @@
         android:label="home_fragment"
         tools:layout="@layout/home_fragment" >
         <action
-            android:id="@+id/action_homeFragment_to_movieFragment"
-            app:destination="@id/movieFragment" />
+            android:id="@+id/send_movie_id"
+            app:destination="@id/movieDetailFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/movieFragment"
         android:name="com.example.armovie.ui.fragment.MovieFragment"
         android:label="movie_fragment"
-        tools:layout="@layout/movie_fragment" >
-        <action
-            android:id="@+id/action_movieFragment_to_settingFragment"
-            app:destination="@id/settingFragment" />
-    </fragment>
+        tools:layout="@layout/movie_fragment" />
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.example.armovie.ui.fragment.SettingFragment"
         android:label="SettingFragment" />
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.example.armovie.ui.fragment.MovieDetailFragment"
+        android:label="movie_detail_fragment"
+        tools:layout="@layout/movie_detail_fragment" >
+
+        <argument
+            android:name="movieID"
+            app:argType="integer" />
+    </fragment>
 </navigation>

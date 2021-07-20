@@ -10,6 +10,7 @@
 
     <color name="colorPrimary">#5767BD</color>
     <color name="colorPrimaryDark">#27399A</color>
+    <color name="colorAccent">#DB72ED</color>
 
     <color name="red">#E91E63</color>
     <color name="orange">#FF5722</color>

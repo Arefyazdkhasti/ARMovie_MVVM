@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import com.example.armovie.data.entity.list.movieItem
 
 import com.example.armovie.databinding.HomeFragmentBinding
@@ -36,11 +37,15 @@ class HomeFragment : ScopedFragment(), KodeinAware {
         return binding?.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        bindUI()
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this,viewModelFactory).get(HomeViewModel::class.java)
 
-        bindUI()
         /*val api = TMDBApiService(ConnectivityInterceptorImpl(this.requireContext()))
         GlobalScope.launch {
             val test = api.getPopularMovie(1).await()
@@ -76,7 +81,7 @@ class HomeFragment : ScopedFragment(), KodeinAware {
 
         val upcomingMovieList = viewModel.upcomingMovieListEntry.await()
 
-        upcomingMovieList.observe(viewLifecycleOwner, Observer { upcomingMovieList ->
+        upcomingMovieList.observe(viewLifecycleOwner , Observer { upcomingMovieList ->
             if (upcomingMovieList == null) return@Observer
 
             //binding?.groupLoading?.visibility = View.GONE
@@ -99,6 +104,10 @@ class HomeFragment : ScopedFragment(), KodeinAware {
         binding?.upcomingRecyclerView?.initRecycler(items,"upcoming")
     }
 
+    /*fun showMovieDetail(movieID : Int,view: View){
+        val actionDetail = HomeFragmentDirections.sendMovieId(movieID)
+        Navigation.findNavController(view).navigate(actionDetail)
+    }*/
 
 
     override fun onDestroyView() {
