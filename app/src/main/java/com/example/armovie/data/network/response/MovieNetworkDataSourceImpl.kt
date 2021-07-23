@@ -109,9 +109,9 @@ class MovieNetworkDataSourceImpl(
         }
     }
 
-    override suspend fun fetchSearchedMovies(query: String) {
+    override suspend fun fetchSearchedMovies(query: String,include_adult:Boolean) {
         try {
-            val fetchSearchedMovies = tmdbApiService.searchMovieAsync(query).await()
+            val fetchSearchedMovies = tmdbApiService.searchMovieAsync(query,include_adult).await()
             _searchMovie.postValue(fetchSearchedMovies)
 
         } catch (e: NoConnectivityException) {
@@ -140,9 +140,9 @@ class MovieNetworkDataSourceImpl(
 
     }
 
-    override suspend fun fetchSearchedTvShows(query: String) {
+    override suspend fun fetchSearchedTvShows(query: String,include_adult:Boolean) {
         try {
-            val fetchSearchTvShowResult = tmdbApiService.searchTvShowAsync(query).await()
+            val fetchSearchTvShowResult = tmdbApiService.searchTvShowAsync(query,include_adult).await()
             _searchTvShow.postValue(fetchSearchTvShowResult)
 
         } catch (e: NoConnectivityException) {

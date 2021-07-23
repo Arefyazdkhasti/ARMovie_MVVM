@@ -58,7 +58,8 @@ interface TMDBApiService {
     //https://api.themoviedb.org/3/search/movie?api_key=cfbf3d30a57bf3a59b1fd9c68e829f1d&query=fear%20street
     @GET("/$API_VERSION/search/movie")
     fun searchMovieAsync(
-        @Query("query") query:String
+        @Query("query") query:String,
+        @Query("include_adult") include_adult:Boolean
     ): Deferred<SearchMovieResponse>
 
 
@@ -78,7 +79,8 @@ interface TMDBApiService {
     //https://api.themoviedb.org/3/search/tv?api_key=cfbf3d30a57bf3a59b1fd9c68e829f1d&query=loki
     @GET("/$API_VERSION/search/tv")
     fun searchTvShowAsync(
-        @Query("query") query:String
+        @Query("query") query:String,
+        @Query("include_adult") include_adult:Boolean
     ): Deferred<SearchTvShowResponse>
 
 

@@ -30,8 +30,8 @@
             android:id="@+id/sendTvShowId"
             app:destination="@id/tvShowDetailFragment" />
         <argument
-            android:name="query"
-            app:argType="string" />
+            android:name="searchQuery"
+            app:argType="com.example.armovie.data.entity.SearchQuery" />
     </fragment>
 
     <fragment
@@ -47,8 +47,9 @@
         android:name="com.example.armovie.ui.fragment.SearchFragment"
         android:label="Search" >
         <action
-            android:id="@+id/sendQuery"
+            android:id="@+id/sendSearchQuery"
             app:destination="@id/searchResultFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/TVShowsFragment"

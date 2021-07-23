@@ -21,11 +21,11 @@ interface MovieRepository {
 
     suspend fun getMovieCredits(movieId: Int): LiveData<MovieCredit>
 
-    suspend fun getSearchMovies(query: String) : LiveData<SearchMovieResponse>
+    suspend fun getSearchMovies(query: String,include_adult:Boolean) : LiveData<SearchMovieResponse>
 
     suspend fun getTvShows(): LiveData<TvShowList>
 
     suspend fun getTvShowDetail(tvShowId: Int): LiveData<TvShowDetail>
 
-    suspend fun getSearchTvShow(query: String) : LiveData<SearchTvShowResponse>
+    suspend fun getSearchTvShow(query: String,include_adult:Boolean) : LiveData<SearchTvShowResponse>
 }

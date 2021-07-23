@@ -1,43 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragment.SearchResultFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icon"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/standard_margin"
+        android:tint="@color/purple_500"
+        app:srcCompat="@drawable/ic_search"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/search_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/small_margin"
+        android:padding="@dimen/standard_margin"
+        android:text="@string/search_hint"
+        android:textColor="@color/purple_500"
+        android:textSize="@dimen/standard_font" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/search_edit_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="40dp"
+        android:layout_below="@id/search_hint"
+        android:layout_margin="@dimen/standard_margin"
+        android:background="@drawable/bg_search_edit_text"
+        android:hint="@string/type_here"
+        android:padding="@dimen/standard_margin"
+        android:textColor="@color/black"
+        android:textCursorDrawable="@drawable/cursor"
+        android:textSize="@dimen/standard_font"/>
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/search_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_margin="@dimen/standard_margin"
-            android:background="@drawable/bg_search"
-            android:hint="@string/type_movie_or_show_title_here"
-            android:padding="@dimen/small_margin"
-            android:textColor="@color/black"
-            android:textCursorDrawable="@drawable/cursor"
-            android:textSize="@dimen/standard_font"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.01999998" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/vote_average"
+        android:layout_width="wrap_content"
+        android:layout_height="47dp"
+        android:layout_below="@id/search_edit_text"
+        android:layout_marginStart="@dimen/standard_margin"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:gravity="center"
+        android:text="@string/vote_average"
+        android:textColor="@color/black"
+        android:textSize="@dimen/standard_font"
+        android:padding="@dimen/standard_margin"/>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/search_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:background="@drawable/bg_genre"
-            android:text="@string/search"
-            android:layout_margin="@dimen/standard_margin"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/search_edit_text"
-            app:layout_constraintStart_toStartOf="@+id/search_edit_text"
-            app:layout_constraintTop_toBottomOf="@+id/search_edit_text" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+    <com.google.android.material.slider.RangeSlider
+        android:id="@+id/range_slider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_edit_text"
+        android:layout_margin="@dimen/standard_margin"
+        android:layout_marginTop="4dp"
+        android:layout_toEndOf="@id/vote_average"
+        android:stepSize="1"
+        android:valueFrom="0"
+        android:valueTo="10"
+        app:values="@array/initial_slider_values" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/include_adult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/vote_average"
+        android:layout_marginStart="@dimen/standard_margin"
+        android:layout_marginEnd="@dimen/standard_margin"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:text="@string/include_adult"
+        android:padding="@dimen/standard_margin"
+        android:checked="false"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/include_adult_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/include_adult"
+        android:text="@string/include_adult_hint"
+        android:layout_marginStart="@dimen/standard_margin"
+        android:padding="@dimen/small_margin"
+        android:visibility="gone"/>
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/search_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_margin="@dimen/standard_margin"
+        android:background="@drawable/bg_search_btn"
+        android:text="@string/search"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/include_adult_hint"
+        />
+
+</RelativeLayout>

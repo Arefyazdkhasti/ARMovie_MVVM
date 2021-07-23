@@ -264,7 +264,8 @@
             android:textSize="@dimen/extra_font"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seasons_recycler_view" />
+            app:layout_constraintTop_toBottomOf="@+id/seasons_recycler_view"
+            android:visibility="gone"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cast_recycler_view"
@@ -274,7 +275,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appCompatTextView_cast"
             tools:itemCount="1"
-            tools:listitem="@layout/cast_item" />
+            tools:listitem="@layout/cast_item"
+            android:visibility="gone"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

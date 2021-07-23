@@ -1,6 +1,7 @@
 package com.example.armovie
 
 import android.app.Application
+import com.example.armovie.data.entity.SearchQuery
 import com.example.armovie.data.network.ConnectivityInterceptor
 import com.example.armovie.data.network.ConnectivityInterceptorImpl
 import com.example.armovie.data.network.TMDBApiService
@@ -28,7 +29,7 @@ class MovieApplication: Application(),KodeinAware{
         bind() from provider { SearchViewModelFactory() }
         bind() from factory() { movieId:Int -> MovieDetailViewModelFactory(movieId,instance()) }
         bind() from factory() { tvShowId:Int -> TvShowDetailViewModelFactory(tvShowId,instance()) }
-        bind() from factory() { query: String -> SearchResultViewModelFactory(query,instance()) }
+        bind() from factory() { searchQuery: SearchQuery -> SearchResultViewModelFactory(searchQuery,instance()) }
 
     }
     override fun onCreate() {

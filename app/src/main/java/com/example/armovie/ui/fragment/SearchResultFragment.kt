@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.armovie.data.entity.SearchQuery
 import com.example.armovie.data.entity.TvShowList.TvShow
 import com.example.armovie.data.entity.movieList.movieItem
 import com.example.armovie.databinding.SearchResultFragmentBinding
@@ -24,7 +26,7 @@ import org.kodein.di.generic.factory
 class SearchResultFragment : ScopedFragment(), KodeinAware {
 
     override val kodein by closestKodein()
-    private val viewModelFactoryInstanceFactory: ((String) -> SearchResultViewModelFactory) by factory()
+    private val viewModelFactoryInstanceFactory: ((SearchQuery) -> SearchResultViewModelFactory) by factory()
 
     private lateinit var viewModel: SearchResultViewModel
 
@@ -44,11 +46,11 @@ class SearchResultFragment : ScopedFragment(), KodeinAware {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val safeArgs = arguments?.let { SearchResultFragmentArgs.fromBundle(it) }
-        val query = safeArgs?.query
-        if (query != null){
+        val searchQuery = safeArgs?.searchQuery
+        if (searchQuery != null){
             viewModel = ViewModelProvider(
                 this,
-                viewModelFactoryInstanceFactory(query)
+                viewModelFactoryInstanceFactory(searchQuery)
             ).get(SearchResultViewModel::class.java)
         }
         bindUI()

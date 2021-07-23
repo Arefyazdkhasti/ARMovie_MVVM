@@ -40,8 +40,8 @@ class MovieRepositoryImpl(
         return movieNetworkDataSource.movieCredits
     }
 
-    override suspend fun getSearchMovies(query: String): LiveData<SearchMovieResponse> {
-        fetchSearchMovie(query)
+    override suspend fun getSearchMovies(query: String,include_adult:Boolean): LiveData<SearchMovieResponse> {
+        fetchSearchMovie(query,include_adult)
         return movieNetworkDataSource.searchMovie
     }
 
@@ -55,8 +55,8 @@ class MovieRepositoryImpl(
         return movieNetworkDataSource.tvShowDetail
     }
 
-    override suspend fun getSearchTvShow(query: String): LiveData<SearchTvShowResponse> {
-        fetchSearchedTvShow(query)
+    override suspend fun getSearchTvShow(query: String,include_adult:Boolean): LiveData<SearchTvShowResponse> {
+        fetchSearchedTvShow(query,include_adult)
         return movieNetworkDataSource.searchTvShow
     }
 
@@ -80,8 +80,8 @@ class MovieRepositoryImpl(
         movieNetworkDataSource.fetchMovieCredits(movieId)
     }
 
-    private suspend fun fetchSearchMovie(query: String){
-        movieNetworkDataSource.fetchSearchedMovies(query)
+    private suspend fun fetchSearchMovie(query: String,include_adult:Boolean){
+        movieNetworkDataSource.fetchSearchedMovies(query,include_adult)
     }
 
     private suspend fun fetchTvShows(){
@@ -92,7 +92,7 @@ class MovieRepositoryImpl(
         movieNetworkDataSource.fetchTvShowDetail(tvShowId)
     }
 
-    private suspend fun fetchSearchedTvShow(query: String){
-        movieNetworkDataSource.fetchSearchedTvShows(query)
+    private suspend fun fetchSearchedTvShow(query: String,include_adult:Boolean){
+        movieNetworkDataSource.fetchSearchedTvShows(query,include_adult)
     }
 }

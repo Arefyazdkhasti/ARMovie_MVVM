@@ -12,35 +12,34 @@ import com.example.armovie.data.entity.search.tvShow.SearchTvShowResponse
 interface MovieNetworkDataSource {
 
     //movies
-    val popularMovieList : LiveData<movieList>
+    val popularMovieList: LiveData<movieList>
     suspend fun fetchPopularMovieList()
 
-    val nowPlayingMovieList : LiveData<movieList>
+    val nowPlayingMovieList: LiveData<movieList>
     suspend fun fetchNowPlayingMovieList()
 
 
-    val upcomingMovieList : LiveData<movieList>
+    val upcomingMovieList: LiveData<movieList>
     suspend fun fetchUpcomingMovieList()
 
 
-    val movieDetail : LiveData<movieDetail>
-    suspend fun fetchMovieDetail(movieId:Int)
+    val movieDetail: LiveData<movieDetail>
+    suspend fun fetchMovieDetail(movieId: Int)
 
-    val movieCredits : LiveData<MovieCredit>
-    suspend fun fetchMovieCredits(movieId:Int)
+    val movieCredits: LiveData<MovieCredit>
+    suspend fun fetchMovieCredits(movieId: Int)
 
-    val searchMovie : LiveData<SearchMovieResponse>
-    suspend fun fetchSearchedMovies(query:String)
+    val searchMovie: LiveData<SearchMovieResponse>
+    suspend fun fetchSearchedMovies(query: String, include_adult: Boolean)
 
     //TV Shows
     val tvShowsList: LiveData<TvShowList>
     suspend fun fetchTvShowList()
 
     val tvShowDetail: LiveData<TvShowDetail>
-    suspend fun fetchTvShowDetail(tvShowId:Int)
+    suspend fun fetchTvShowDetail(tvShowId: Int)
 
     val searchTvShow: LiveData<SearchTvShowResponse>
-    suspend fun fetchSearchedTvShows(query:String)
-
+    suspend fun fetchSearchedTvShows(query: String, include_adult: Boolean)
 
 }
