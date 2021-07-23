@@ -1,4 +1,4 @@
-package com.example.armovie.data.entity.single
+package com.example.armovie.data.entity.movie
 
 
 import android.os.Parcelable
@@ -6,9 +6,9 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class ProductionCountry(
-    @SerializedName("iso_3166_1")
-    val iso31661: String,
+data class Genre(
+    @SerializedName("id")
+    val id: Int,
     @SerializedName("name")
     val name: String
-):Parcelable
+): Parcelable

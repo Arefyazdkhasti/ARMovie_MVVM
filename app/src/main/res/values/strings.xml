@@ -13,4 +13,13 @@
     <string name="runtime">Runtime</string>
     <string name="vote_average">Vote Average</string>
     <string name="casts">Casts</string>
+    <string name="tag_line_test_text">tag_line_test_text</string>
+    <string name="tv_series">TV Series</string>
+    <string name="search">Search</string>
+    <string name="tv_show">Tv Show</string>
+    <string name="overView">After stealing the Tesseract during the events of “Avengers: Endgame,” an alternate version of Loki is brought to the mysterious Time Variance Authority, a bureaucratic organization that exists outside of time and space and monitors the timeline. They give Loki a choice: face being erased from existence due to being a “time variant” or help fix the timeline and stop a greater threat.</string>
+    <string name="number_of_episodes">Number of episodes</string>
+    <string name="number_of_seasons">Number of seasons</string>
+    <string name="original_language">Original Language</string>
+    <string name="seasons">Seasons</string>
 </resources>

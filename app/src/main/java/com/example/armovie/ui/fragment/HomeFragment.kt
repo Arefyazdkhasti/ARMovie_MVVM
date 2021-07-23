@@ -6,8 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
-import com.example.armovie.data.entity.list.movieItem
+import com.example.armovie.data.entity.movieList.movieItem
 
 import com.example.armovie.databinding.HomeFragmentBinding
 import com.example.armovie.ui.base.ScopedFragment

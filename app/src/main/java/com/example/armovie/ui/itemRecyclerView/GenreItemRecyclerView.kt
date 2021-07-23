@@ -1,7 +1,7 @@
 package com.example.armovie.ui.itemRecyclerView
 
 import com.example.armovie.R
-import com.example.armovie.data.entity.single.Genre
+import com.example.armovie.data.entity.movie.Genre
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.genre_item.view.*

@@ -22,7 +22,7 @@
         tools:listitem="@layout/movie_item"
         tools:itemCount="3"
         app:shimmer_demo_child_count="3"
-        app:shimmer_demo_layout="@layout/movie_demo"
+        app:shimmer_demo_layout="@layout/movie_item_shimmer"
         app:shimmer_demo_layout_manager_type="linear_horizontal"
         app:shimmer_demo_angle="20"
         />

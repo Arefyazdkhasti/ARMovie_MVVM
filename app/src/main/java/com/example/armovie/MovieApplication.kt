@@ -9,8 +9,7 @@ import com.example.armovie.data.network.response.MovieNetworkDataSource
 import com.example.armovie.data.network.response.MovieNetworkDataSourceImpl
 import com.example.armovie.data.repository.MovieRepository
 import com.example.armovie.data.repository.MovieRepositoryImpl
-import com.example.armovie.ui.viewModel.HomeViewModelFactory
-import com.example.armovie.ui.viewModel.MovieDetailViewModelFactory
+import com.example.armovie.ui.viewModel.*
 import com.jakewharton.threetenabp.AndroidThreeTen
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -26,11 +25,15 @@ class MovieApplication: Application(),KodeinAware{
         bind<MovieNetworkDataSource>() with singleton { MovieNetworkDataSourceImpl(instance()) }
         bind<MovieRepository>() with singleton { MovieRepositoryImpl(instance())}
         bind() from provider { HomeViewModelFactory(instance()) }
+        bind() from provider { MovieViewModelFactory(instance()) }
+        bind() from provider { TVShowsViewModelFactory(instance()) }
+        bind() from provider { SearchViewModelFactory(instance()) }
         bind() from factory() { movieId:Int -> MovieDetailViewModelFactory(movieId,instance()) }
+        bind() from factory() { tvShowId:Int -> TvShowDetailViewModelFactory(tvShowId,instance()) }
+
     }
     override fun onCreate() {
         super.onCreate()
         AndroidThreeTen.init(this)
-        //PreferenceManager.setDefaultValues(this, R.xml.preferences, false)
     }
 }

@@ -1,4 +1,4 @@
-package com.example.armovie.data.entity.single
+package com.example.armovie.data.entity.movie
 
 
 import android.os.Parcelable

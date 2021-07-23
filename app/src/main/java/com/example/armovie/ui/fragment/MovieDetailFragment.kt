@@ -2,7 +2,6 @@ package com.example.armovie.ui.fragment
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +10,10 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.armovie.R
 import com.example.armovie.data.entity.credits.Cast
-import com.example.armovie.data.entity.single.Genre
-import com.example.armovie.data.entity.single.movieDetail
+import com.example.armovie.data.entity.movie.Genre
 import com.example.armovie.data.network.BASE_IMAGE_MOVIE
-import com.example.armovie.databinding.MovieDemoBinding
 import com.example.armovie.databinding.MovieDetailFragmentBinding
 import com.example.armovie.ui.base.ScopedFragment
 import com.example.armovie.ui.itemRecyclerView.CastItemRecyclerView
@@ -29,12 +25,10 @@ import com.example.armovie.utility.GlideApp
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.movie_detail_fragment.*
-import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import org.kodein.di.generic.factory
-import java.util.Collections.addAll
 
 class MovieDetailFragment : ScopedFragment(), KodeinAware {
 
@@ -65,17 +59,26 @@ class MovieDetailFragment : ScopedFragment(), KodeinAware {
                 MovieDetailViewModel::class.java
             )
 
+        //TODO make shimmer works
+        /*binding.movieDetailRoot.visibility = View.GONE
+        binding.shimmerFrameLayout.visibility = View.VISIBLE
+        binding.shimmerFrameLayout.startShimmerAnimation()*/
         bindUI()
     }
 
     private fun bindUI() = launch {
         val movieDetail = viewModel.movieDetail.await()
 
+       /* binding.movieDetailRoot.visibility = View.VISIBLE
+        binding.shimmerFrameLayout.stopShimmerAnimation()
+        binding.shimmerFrameLayout.visibility = View.GONE*/
+
         //curve image corners
         binding.posterImage.clipToOutline = true
 
 
         movieDetail.observe(viewLifecycleOwner, Observer { movie_detail ->
+            if(movie_detail == null) return@Observer
             //toolbar
             (activity as? AppCompatActivity)?.supportActionBar?.title = movie_detail.title
             //(activity as? AppCompatActivity)?.supportActionBar?.subtitle = movie_detail.releaseDate
@@ -94,7 +97,7 @@ class MovieDetailFragment : ScopedFragment(), KodeinAware {
                 .into(binding.posterImage)
 
             //Genre RecyclerView
-            initGenreRecyclerView(movie_detail.genres.toGenreItems(),binding.genreRecyclerView)
+            initGenreRecyclerView(movie_detail.genres.toGenreItems(), binding.genreRecyclerView)
 
             //release date
             binding.releaseDate.text = movie_detail.releaseDate
@@ -118,36 +121,42 @@ class MovieDetailFragment : ScopedFragment(), KodeinAware {
         movieCredits.observe(viewLifecycleOwner, Observer { movie_credits ->
 
             //cast RecyclerView
-            initCastRecyclerView(movie_credits.cast.toCastItems(),binding.castRecyclerView)
+            initCastRecyclerView(movie_credits.cast.toCastItems(), binding.castRecyclerView)
         })
 
+
     }
 
 
-
-    private fun initGenreRecyclerView(items: List<GenreItemRecyclerView>, recyclerView: RecyclerView) {
+    private fun initGenreRecyclerView(
+        items: List<GenreItemRecyclerView>,
+        recyclerView: RecyclerView
+    ) {
         val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
             addAll(items)
         }
 
         recyclerView.apply {
-            layoutManager = LinearLayoutManager(this.context,LinearLayoutManager.HORIZONTAL,false)
+            layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
             adapter = groupAdapter
         }
     }
 
-    private fun initCastRecyclerView(items : List<CastItemRecyclerView>, recyclerView: RecyclerView) {
+    private fun initCastRecyclerView(
+        items: List<CastItemRecyclerView>,
+        recyclerView: RecyclerView
+    ) {
         val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
             addAll(items)
         }
 
         recyclerView.apply {
-            layoutManager = GridLayoutManager(this.context,3,GridLayoutManager.HORIZONTAL,false)
+            layoutManager = GridLayoutManager(this.context, 3, GridLayoutManager.HORIZONTAL, false)
             adapter = groupAdapter
         }
     }
 
-    private fun List<Genre>.toGenreItems() : List<GenreItemRecyclerView> = this.map {
+    private fun List<Genre>.toGenreItems(): List<GenreItemRecyclerView> = this.map {
         GenreItemRecyclerView(it)
     }
 
@@ -155,7 +164,7 @@ class MovieDetailFragment : ScopedFragment(), KodeinAware {
         CastItemRecyclerView(it)
     }
 
-    
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

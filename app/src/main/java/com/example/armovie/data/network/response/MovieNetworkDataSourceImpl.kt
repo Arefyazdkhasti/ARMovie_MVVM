@@ -3,9 +3,12 @@ package com.example.armovie.data.network.response
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.armovie.data.entity.TvShow.TvShowDetail
+import com.example.armovie.data.entity.TvShowList.TvShowList
 import com.example.armovie.data.entity.credits.MovieCredit
-import com.example.armovie.data.entity.list.movieList
-import com.example.armovie.data.entity.single.movieDetail
+import com.example.armovie.data.entity.movieList.movieList
+import com.example.armovie.data.entity.search.SearchMovie
+import com.example.armovie.data.entity.movie.movieDetail
 import com.example.armovie.data.network.TMDBApiService
 import com.example.armovie.utility.NoConnectivityException
 
@@ -33,6 +36,18 @@ class MovieNetworkDataSourceImpl(
     override val movieCredits: LiveData<MovieCredit>
         get() = _movieCredits
 
+    private val _searchMovie = MutableLiveData<SearchMovie>()
+    override val searchMovie: LiveData<SearchMovie>
+        get() = _searchMovie
+
+
+    private val _tvShows = MutableLiveData<TvShowList>()
+    override val tvShowsList: LiveData<TvShowList>
+        get() = _tvShows
+
+    private val _tvShowDetail = MutableLiveData<TvShowDetail>()
+    override val tvShowDetail: LiveData<TvShowDetail>
+        get() = _tvShowDetail
 
     override suspend fun fetchPopularMovieList() {
         try {
@@ -87,5 +102,36 @@ class MovieNetworkDataSourceImpl(
             Log.e("Connectivity", "No internet connection", e)
 
         }
+    }
+
+    override suspend fun fetchSearchedMovies(query: String) {
+        try {
+            val fetchSearchedMovies = tmdbApiService.searchMovieAsync(query).await()
+            _searchMovie.postValue(fetchSearchedMovies)
+
+        } catch (e: NoConnectivityException) {
+            Log.e("Connectivity", "No internet connection", e)
+        }
+    }
+
+    override suspend fun fetchTvShowList() {
+        try {
+            val fetchTvShowList = tmdbApiService.getTvShowsAsync(1).await()
+            _tvShows.postValue(fetchTvShowList)
+
+        } catch (e: NoConnectivityException) {
+            Log.e("Connectivity", "No internet connection", e)
+        }
+    }
+
+    override suspend fun fetchTvShowDetail(tvShowId:Int) {
+        try {
+            val fetchTvShowDetail = tmdbApiService.getTvShowsDetailsAsync(tvShowId).await()
+            _tvShowDetail.postValue(fetchTvShowDetail)
+
+        } catch (e: NoConnectivityException) {
+            Log.e("Connectivity", "No internet connection", e)
+        }
+
     }
 }

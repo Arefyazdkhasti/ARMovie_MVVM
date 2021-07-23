@@ -7,18 +7,18 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.armovie.R
-import com.example.armovie.data.entity.list.movieItem
+import com.example.armovie.data.entity.movieList.movieItem
 import com.example.armovie.data.network.BASE_IMAGE_MOVIE
 import com.example.armovie.ui.fragment.HomeFragmentDirections
 import com.example.armovie.utility.GlideApp
 import kotlinx.android.synthetic.main.movie_item.view.*
 
 
-class RecyclerItemMovieAdapter(
+class RecyclerItemMovieAdapterHome(
     private val context: Context,
     private val data: List<movieItem>,
     //private val type: TypeGetProduct
-) : RecyclerView.Adapter<RecyclerItemMovieAdapter.ItemMovieViewHolder>() {
+) : RecyclerView.Adapter<RecyclerItemMovieAdapterHome.ItemMovieViewHolder>() {
 
 
 
@@ -32,7 +32,6 @@ class RecyclerItemMovieAdapter(
         )
 
     override fun onBindViewHolder(holder: ItemMovieViewHolder, position: Int) {
-
         holder.setData(data[position],position)
     }
 
@@ -57,10 +56,9 @@ class RecyclerItemMovieAdapter(
 
 
             rootView.setOnClickListener {
-                val actionDetail = HomeFragmentDirections.sendMovieId(data[position].id)
-                Navigation.findNavController(it).navigate(actionDetail)
+                val actionDetailHome = HomeFragmentDirections.sendMovieId(data[position].id)
+                Navigation.findNavController(it).navigate(actionDetailHome)
             }
-
 
         }
     }

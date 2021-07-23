@@ -3,21 +3,15 @@ package com.example.armovie.ui.custom
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
-import android.widget.ProgressBar
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.cooltechworks.views.shimmer.ShimmerRecyclerView
 import com.example.armovie.R
-import com.example.armovie.data.entity.list.movieItem
-import com.example.armovie.data.entity.list.movieList
-import com.example.armovie.ui.adpter.RecyclerItemMovieAdapter
-import com.example.armovie.ui.fragment.HomeFragmentDirections
+import com.example.armovie.data.entity.movieList.movieItem
+import com.example.armovie.ui.adpter.RecyclerItemMovieAdapterHome
 import com.example.armovie.ui.itemRecyclerView.MovieItemRecyclerView
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
-import kotlinx.android.synthetic.main.home_fragment.view.*
 
 
 class MovieView(
@@ -74,7 +68,7 @@ class MovieView(
             addAll(data.toMovieItems())
         }
 
-        val itemAdapter = RecyclerItemMovieAdapter(context,data)
+        val itemAdapter = RecyclerItemMovieAdapterHome(context,data)
 
         movieRecycleView.apply {
             adapter = itemAdapter

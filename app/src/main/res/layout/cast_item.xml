@@ -6,21 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="@dimen/small_margin">
 
-    <!--<androidx.cardview.widget.CardView
-        android:id="@+id/card_view"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
-        android:elevation="10dp"
-        android:innerRadius="0dp"
-        android:shape="ring"
-        android:thicknessRatio="1.9"
-        app:cardCornerRadius="40dp"
-        android:layout_margin="@dimen/small_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">-->
-
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/cast_image"
             android:layout_width="100dp"
@@ -32,11 +17,9 @@
             app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/round_outline"/>
 
-   <!-- </androidx.cardview.widget.CardView>-->
-
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/cast_name"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/small_margin"
         android:textColor="@color/black"
@@ -46,11 +29,12 @@
         app:layout_constraintStart_toStartOf="@+id/cast_image"
         app:layout_constraintTop_toBottomOf="@+id/cast_image"
         app:layout_constraintVertical_bias="0.19999999"
-        tools:text="Tanaz Tabatabayi" />
+        tools:text="Tanaz Tabatabayi"
+        android:textAlignment="center"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/cast_character"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/small_margin"
         android:textColor="@color/black"
@@ -59,7 +43,9 @@
         app:layout_constraintEnd_toEndOf="@+id/cast_image"
         app:layout_constraintStart_toStartOf="@+id/cast_image"
         app:layout_constraintTop_toBottomOf="@+id/cast_name"
-        tools:text="Tanaz Tabatabayi" />
+        tools:text="Tanaz Tabatabayi"
+        android:ellipsize="end"
+        android:textAlignment="center"/>
 
 
 

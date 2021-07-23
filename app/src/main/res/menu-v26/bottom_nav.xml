@@ -8,15 +8,15 @@
         android:iconTint="@color/black"
         />
     <item
-        android:id="@+id/movieFragment"
-        android:title="@string/movie"
-        android:icon="@drawable/ic_movie"
+        android:id="@+id/searchFragment"
+        android:title="@string/search"
+        android:icon="@drawable/ic_search"
         android:iconTint="@color/black"
         />
     <item
-        android:id="@+id/settingFragment"
-        android:title="@string/setting"
-        android:icon="@drawable/ic_settings"
+        android:id="@+id/TVShowsFragment"
+        android:title="@string/tv_show"
+        android:icon="@drawable/ic_movie"
         android:iconTint="@color/black"
         />
 </menu>

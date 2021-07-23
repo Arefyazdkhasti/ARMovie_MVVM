@@ -1,10 +1,8 @@
 package com.example.armovie.ui.itemRecyclerView
 
-import android.view.View
 import com.example.armovie.R
-import com.example.armovie.data.entity.list.movieItem
+import com.example.armovie.data.entity.movieList.movieItem
 import com.example.armovie.data.network.BASE_IMAGE_MOVIE
-import com.example.armovie.databinding.MovieItemBinding
 import com.example.armovie.utility.GlideApp
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
@@ -27,7 +25,6 @@ class MovieItemRecyclerView(private val movieItem: movieItem): Item<GroupieViewH
 
     }
 
-    fun getMovieId() = movieItem.id
 
 
 }

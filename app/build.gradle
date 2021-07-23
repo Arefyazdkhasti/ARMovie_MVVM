@@ -78,6 +78,7 @@ dependencies {
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "androidx.lifecycle:lifecycle-compiler:2.3.1"
 
     // Kodein
@@ -108,6 +109,9 @@ dependencies {
 
     //RecyclerView Shimmer Animation
     implementation 'com.github.sharish:ShimmerRecyclerView:v1.3'
+
+    //facebook shimmer animation
+    implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

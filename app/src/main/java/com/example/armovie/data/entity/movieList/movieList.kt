@@ -1,8 +1,7 @@
-package com.example.armovie.data.entity.list
+package com.example.armovie.data.entity.movieList
 
 
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
 
 data class movieList(
     val page: Int,

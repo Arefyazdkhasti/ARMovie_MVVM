@@ -1,9 +1,11 @@
 package com.example.armovie.data.network
 
-import androidx.lifecycle.LiveData
+import com.example.armovie.data.entity.TvShow.TvShowDetail
+import com.example.armovie.data.entity.TvShowList.TvShowList
 import com.example.armovie.data.entity.credits.MovieCredit
-import com.example.armovie.data.entity.list.movieList
-import com.example.armovie.data.entity.single.movieDetail
+import com.example.armovie.data.entity.movieList.movieList
+import com.example.armovie.data.entity.search.SearchMovie
+import com.example.armovie.data.entity.movie.movieDetail
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
@@ -51,6 +53,26 @@ interface TMDBApiService {
     fun getMovieCreditsAsync(
         @Path("id") id:Int
     ): Deferred<MovieCredit>
+
+    //https://api.themoviedb.org/3/search/movie?api_key=cfbf3d30a57bf3a59b1fd9c68e829f1d&query=fear%20street
+    @GET("/$API_VERSION/search/movie")
+    fun searchMovieAsync(
+        @Query("query") query:String
+    ): Deferred<SearchMovie>
+
+
+
+    //https://api.themoviedb.org/3/discover/tv?page=1&api_key=cfbf3d30a57bf3a59b1fd9c68e829f1d
+    @GET("/$API_VERSION/discover/tv")
+    fun getTvShowsAsync(
+        @Query("page") page: Int
+    ): Deferred<TvShowList>
+
+    //https://api.themoviedb.org/3/tv/60735?api_key=cfbf3d30a57bf3a59b1fd9c68e829f1d
+    @GET("/$API_VERSION/tv/{id}")
+    fun getTvShowsDetailsAsync(
+        @Path("id") id: Int
+    ): Deferred<TvShowDetail>
 
 
     companion object {

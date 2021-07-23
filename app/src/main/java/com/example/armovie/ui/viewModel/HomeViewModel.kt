@@ -15,6 +15,7 @@ class HomeViewModel(
     val nowPlayingMovieListEntry by lazyDeferred{
         movieRepository.getNowPlayingMovieList()
     }
+
     val upcomingMovieListEntry by lazyDeferred{
         movieRepository.getUpcomingMovieList()
     }
