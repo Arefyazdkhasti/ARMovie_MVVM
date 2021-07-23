@@ -5,8 +5,9 @@ import com.example.armovie.data.entity.TvShow.TvShowDetail
 import com.example.armovie.data.entity.TvShowList.TvShowList
 import com.example.armovie.data.entity.credits.MovieCredit
 import com.example.armovie.data.entity.movieList.movieList
-import com.example.armovie.data.entity.search.SearchMovie
+import com.example.armovie.data.entity.search.movie.SearchMovieResponse
 import com.example.armovie.data.entity.movie.movieDetail
+import com.example.armovie.data.entity.search.tvShow.SearchTvShowResponse
 
 interface MovieNetworkDataSource {
 
@@ -28,7 +29,7 @@ interface MovieNetworkDataSource {
     val movieCredits : LiveData<MovieCredit>
     suspend fun fetchMovieCredits(movieId:Int)
 
-    val searchMovie : LiveData<SearchMovie>
+    val searchMovie : LiveData<SearchMovieResponse>
     suspend fun fetchSearchedMovies(query:String)
 
     //TV Shows
@@ -37,6 +38,9 @@ interface MovieNetworkDataSource {
 
     val tvShowDetail: LiveData<TvShowDetail>
     suspend fun fetchTvShowDetail(tvShowId:Int)
+
+    val searchTvShow: LiveData<SearchTvShowResponse>
+    suspend fun fetchSearchedTvShows(query:String)
 
 
 }

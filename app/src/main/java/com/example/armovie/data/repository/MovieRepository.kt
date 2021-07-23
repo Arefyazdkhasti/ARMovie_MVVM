@@ -5,8 +5,9 @@ import com.example.armovie.data.entity.TvShow.TvShowDetail
 import com.example.armovie.data.entity.TvShowList.TvShowList
 import com.example.armovie.data.entity.credits.MovieCredit
 import com.example.armovie.data.entity.movieList.movieList
-import com.example.armovie.data.entity.search.SearchMovie
+import com.example.armovie.data.entity.search.movie.SearchMovieResponse
 import com.example.armovie.data.entity.movie.movieDetail
+import com.example.armovie.data.entity.search.tvShow.SearchTvShowResponse
 
 interface MovieRepository {
 
@@ -20,9 +21,11 @@ interface MovieRepository {
 
     suspend fun getMovieCredits(movieId: Int): LiveData<MovieCredit>
 
-    suspend fun getSearchMovies(query: String) : LiveData<SearchMovie>
+    suspend fun getSearchMovies(query: String) : LiveData<SearchMovieResponse>
 
     suspend fun getTvShows(): LiveData<TvShowList>
 
     suspend fun getTvShowDetail(tvShowId: Int): LiveData<TvShowDetail>
+
+    suspend fun getSearchTvShow(query: String) : LiveData<SearchTvShowResponse>
 }

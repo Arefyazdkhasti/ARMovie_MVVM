@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.armovie.R
 import com.example.armovie.data.entity.movieList.movieItem
 import com.example.armovie.data.network.BASE_IMAGE_MOVIE
-import com.example.armovie.ui.fragment.MovieFragmentDirections
+import com.example.armovie.ui.fragment.SearchResultFragmentDirections
 import com.example.armovie.utility.GlideApp
 import kotlinx.android.synthetic.main.movie_item.view.*
 
@@ -55,7 +55,7 @@ class RecyclerItemMovieAdapterMovie(
 
 
             rootView.setOnClickListener {
-                val actionDetailHome = MovieFragmentDirections.sendMovieId(data[position].id)
+                val actionDetailHome = SearchResultFragmentDirections.sendMovieId(data[position].id)
                 Navigation.findNavController(it).navigate(actionDetailHome)
             }
 

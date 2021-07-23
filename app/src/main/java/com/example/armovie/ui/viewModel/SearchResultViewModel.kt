@@ -2,15 +2,19 @@ package com.example.armovie.ui.viewModel
 
 import androidx.lifecycle.ViewModel
 import com.example.armovie.data.repository.MovieRepository
-import com.example.armovie.ui.insterface.SearchQuery
 import com.example.armovie.utility.lazyDeferred
 
-class MovieViewModel(
+class SearchResultViewModel(
+    private val query: String,
     private val movieRepository: MovieRepository
 ) : ViewModel() {
 
 
     val searchMovieResult by lazyDeferred {
-        movieRepository.getSearchMovies("black widow")
+        movieRepository.getSearchMovies(query)
+    }
+
+    val searchTvShowResult by lazyDeferred {
+        movieRepository.getSearchTvShow(query)
     }
 }

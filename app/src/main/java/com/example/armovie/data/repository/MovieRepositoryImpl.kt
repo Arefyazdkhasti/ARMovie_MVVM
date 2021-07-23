@@ -5,8 +5,9 @@ import com.example.armovie.data.entity.TvShow.TvShowDetail
 import com.example.armovie.data.entity.TvShowList.TvShowList
 import com.example.armovie.data.entity.credits.MovieCredit
 import com.example.armovie.data.entity.movieList.movieList
-import com.example.armovie.data.entity.search.SearchMovie
+import com.example.armovie.data.entity.search.movie.SearchMovieResponse
 import com.example.armovie.data.entity.movie.movieDetail
+import com.example.armovie.data.entity.search.tvShow.SearchTvShowResponse
 import com.example.armovie.data.network.response.MovieNetworkDataSource
 
 class MovieRepositoryImpl(
@@ -39,7 +40,7 @@ class MovieRepositoryImpl(
         return movieNetworkDataSource.movieCredits
     }
 
-    override suspend fun getSearchMovies(query: String): LiveData<SearchMovie> {
+    override suspend fun getSearchMovies(query: String): LiveData<SearchMovieResponse> {
         fetchSearchMovie(query)
         return movieNetworkDataSource.searchMovie
     }
@@ -52,6 +53,11 @@ class MovieRepositoryImpl(
     override suspend fun getTvShowDetail(tvShowId: Int): LiveData<TvShowDetail> {
         fetchTvShowDetail(tvShowId)
         return movieNetworkDataSource.tvShowDetail
+    }
+
+    override suspend fun getSearchTvShow(query: String): LiveData<SearchTvShowResponse> {
+        fetchSearchedTvShow(query)
+        return movieNetworkDataSource.searchTvShow
     }
 
     private suspend fun fetchPopularMovie() {
@@ -81,7 +87,12 @@ class MovieRepositoryImpl(
     private suspend fun fetchTvShows(){
         movieNetworkDataSource.fetchTvShowList()
     }
+
     private suspend fun fetchTvShowDetail(tvShowId: Int){
         movieNetworkDataSource.fetchTvShowDetail(tvShowId)
+    }
+
+    private suspend fun fetchSearchedTvShow(query: String){
+        movieNetworkDataSource.fetchSearchedTvShows(query)
     }
 }

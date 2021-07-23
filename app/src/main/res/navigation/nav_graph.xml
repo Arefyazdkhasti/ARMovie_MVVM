@@ -16,16 +16,22 @@
 
     </fragment>
     <fragment
-        android:id="@+id/movieFragment"
-        android:name="com.example.armovie.ui.fragment.MovieFragment"
-        android:label="Movies"
-        tools:layout="@layout/movie_fragment">
-        <argument
+        android:id="@+id/searchResultFragment"
+        android:name="com.example.armovie.ui.fragment.SearchResultFragment"
+        android:label="Search Result"
+        tools:layout="@layout/search_result_fragment">
+        <!--<argument
             android:name="movieID"
-            app:argType="integer" />
+            app:argType="integer" />-->
         <action
             android:id="@+id/sendMovieId"
             app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/sendTvShowId"
+            app:destination="@id/tvShowDetailFragment" />
+        <argument
+            android:name="query"
+            app:argType="string" />
     </fragment>
 
     <fragment
@@ -41,8 +47,8 @@
         android:name="com.example.armovie.ui.fragment.SearchFragment"
         android:label="Search" >
         <action
-            android:id="@+id/action_searchFragment2_to_movieFragment"
-            app:destination="@id/movieFragment" />
+            android:id="@+id/sendQuery"
+            app:destination="@id/searchResultFragment" />
     </fragment>
     <fragment
         android:id="@+id/TVShowsFragment"

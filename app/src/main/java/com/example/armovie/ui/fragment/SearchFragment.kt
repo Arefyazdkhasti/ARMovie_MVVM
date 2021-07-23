@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.armovie.data.entity.movieList.movieItem
@@ -47,78 +48,13 @@ class SearchFragment : ScopedFragment(), KodeinAware {
             viewModelFactory
         ).get(SearchViewModel::class.java)
 
-        //TODO init search result recycler View
-    }
 
-    /*  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-          super.onViewCreated(view, savedInstanceState)
-
-          binding.searchView.setOnQueryTextFocusChangeListener(object :
-              SearchView.OnQueryTextListener,
-              View.OnFocusChangeListener {
-              override fun onQueryTextSubmit(query: String?): Boolean {
-
-                  Log.i("TEST", "query: $query")
-                  //initMovieResultRecyclerView(query)
-                  //initTVShowResultRecyclerView(query)
-                  return false
-              }
-
-              override fun onQueryTextChange(query: String?): Boolean {
-                  Log.i("TEST", "query: $query")
-                  //initMovieResultRecyclerView(query)
-                  //initTVShowResultRecyclerView(query)
-                  return false
-              }
-
-              override fun onFocusChange(p0: View?, p1: Boolean) {
-
-              }
-          })
-    }*/
-
-    private fun initMovieResultRecyclerView(query: String?) = launch {
-        /*if (query != null) {
-            //TODO find better eay to pass query to viewModel
-            //viewModel.setQuery(query)
-        }*/
-
-        val movieResult = viewModel.searchMovieResult.await()
-
-        movieResult.observe(viewLifecycleOwner, Observer {
-            if (it == null) return@Observer
-
-            initMovieRecycler(it.searchResults, binding.movieSearchResultRecyclerView)
-
-        })
-    }
-
-    private fun initMovieRecycler(
-        searchResults: List<movieItem>,
-        movieSearchResultRecyclerView: RecyclerView
-    ) {
-
-        /*val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
-            addAll(searchResults)
-        }*/
-        val groupAdapter = RecyclerItemMovieAdapterMovie(requireContext(), searchResults)
-        movieSearchResultRecyclerView.apply {
-            adapter = groupAdapter
-            layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        binding.searchBtn.setOnClickListener {
+            val query = binding.searchEditText.text
+            if (query != null) {
+                val actionDetail = SearchFragmentDirections.sendQuery(query.toString())
+                Navigation.findNavController(it).navigate(actionDetail)
+            }
         }
     }
-
-    private fun List<movieItem>.toMovieItems(): List<MovieItemRecyclerView> = this.map {
-        MovieItemRecyclerView(it)
-    }
-
-    private fun initTVShowResultRecyclerView(query: String?) {
-
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
 }

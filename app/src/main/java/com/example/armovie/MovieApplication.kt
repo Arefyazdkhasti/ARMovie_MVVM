@@ -1,7 +1,6 @@
 package com.example.armovie
 
 import android.app.Application
-import androidx.preference.PreferenceManager
 import com.example.armovie.data.network.ConnectivityInterceptor
 import com.example.armovie.data.network.ConnectivityInterceptorImpl
 import com.example.armovie.data.network.TMDBApiService
@@ -25,11 +24,11 @@ class MovieApplication: Application(),KodeinAware{
         bind<MovieNetworkDataSource>() with singleton { MovieNetworkDataSourceImpl(instance()) }
         bind<MovieRepository>() with singleton { MovieRepositoryImpl(instance())}
         bind() from provider { HomeViewModelFactory(instance()) }
-        bind() from provider { MovieViewModelFactory(instance()) }
         bind() from provider { TVShowsViewModelFactory(instance()) }
-        bind() from provider { SearchViewModelFactory(instance()) }
+        bind() from provider { SearchViewModelFactory() }
         bind() from factory() { movieId:Int -> MovieDetailViewModelFactory(movieId,instance()) }
         bind() from factory() { tvShowId:Int -> TvShowDetailViewModelFactory(tvShowId,instance()) }
+        bind() from factory() { query: String -> SearchResultViewModelFactory(query,instance()) }
 
     }
     override fun onCreate() {

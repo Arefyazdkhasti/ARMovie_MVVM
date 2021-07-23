@@ -4,8 +4,9 @@ import com.example.armovie.data.entity.TvShow.TvShowDetail
 import com.example.armovie.data.entity.TvShowList.TvShowList
 import com.example.armovie.data.entity.credits.MovieCredit
 import com.example.armovie.data.entity.movieList.movieList
-import com.example.armovie.data.entity.search.SearchMovie
+import com.example.armovie.data.entity.search.movie.SearchMovieResponse
 import com.example.armovie.data.entity.movie.movieDetail
+import com.example.armovie.data.entity.search.tvShow.SearchTvShowResponse
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
@@ -58,7 +59,7 @@ interface TMDBApiService {
     @GET("/$API_VERSION/search/movie")
     fun searchMovieAsync(
         @Query("query") query:String
-    ): Deferred<SearchMovie>
+    ): Deferred<SearchMovieResponse>
 
 
 
@@ -73,6 +74,12 @@ interface TMDBApiService {
     fun getTvShowsDetailsAsync(
         @Path("id") id: Int
     ): Deferred<TvShowDetail>
+
+    //https://api.themoviedb.org/3/search/tv?api_key=cfbf3d30a57bf3a59b1fd9c68e829f1d&query=loki
+    @GET("/$API_VERSION/search/tv")
+    fun searchTvShowAsync(
+        @Query("query") query:String
+    ): Deferred<SearchTvShowResponse>
 
 
     companion object {

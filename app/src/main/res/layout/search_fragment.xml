@@ -4,60 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.MovieFragment">
+    tools:context=".ui.fragment.SearchResultFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/appCompatTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/standard_margin"
-            android:text="@string/movie"
-            android:textColor="@color/black"
-            android:textSize="@dimen/large_font"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/movie_search_result_recyclerView"
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/search_edit_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_margin="@dimen/standard_margin"
+            android:background="@drawable/bg_search"
+            android:hint="@string/type_movie_or_show_title_here"
+            android:padding="@dimen/small_margin"
+            android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/cursor"
+            android:textSize="@dimen/standard_font"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView"
-            tools:itemCount="1"
-            tools:listitem="@layout/movie_item"
-            />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.01999998" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/appCompatTextView2"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/search_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_genre"
+            android:text="@string/search"
             android:layout_margin="@dimen/standard_margin"
-            android:text="@string/tv_series"
-            android:textColor="@color/black"
-            android:textSize="@dimen/large_font"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/movie_search_result_recyclerView" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/tv_shows_search_result_recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/standard_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2"
-            tools:itemCount="1"
-            tools:listitem="@layout/movie_item"
-            />
-
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/search_edit_text"
+            app:layout_constraintStart_toStartOf="@+id/search_edit_text"
+            app:layout_constraintTop_toBottomOf="@+id/search_edit_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

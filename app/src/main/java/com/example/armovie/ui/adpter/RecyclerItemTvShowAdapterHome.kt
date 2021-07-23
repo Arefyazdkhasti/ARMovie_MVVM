@@ -12,7 +12,6 @@ import com.example.armovie.data.entity.TvShowList.TvShow
 import com.example.armovie.data.entity.movieList.movieItem
 import com.example.armovie.data.network.BASE_IMAGE_MOVIE
 import com.example.armovie.ui.fragment.HomeFragmentDirections
-import com.example.armovie.ui.fragment.MovieFragmentDirections
 import com.example.armovie.ui.fragment.TVShowsFragmentDirections
 import com.example.armovie.utility.GlideApp
 import kotlinx.android.synthetic.main.movie_item.view.*

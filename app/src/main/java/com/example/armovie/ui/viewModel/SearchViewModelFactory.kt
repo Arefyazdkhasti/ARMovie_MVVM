@@ -5,13 +5,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.armovie.data.repository.MovieRepository
 
 class SearchViewModelFactory(
-    private val movieRepository: MovieRepository
+    //private val movieRepository: MovieRepository
 ) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return SearchViewModel(
-            movieRepository
+            //movieRepository
         ) as T
     }
 }

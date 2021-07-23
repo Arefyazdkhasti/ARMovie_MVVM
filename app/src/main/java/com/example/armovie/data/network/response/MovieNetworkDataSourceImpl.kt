@@ -7,8 +7,9 @@ import com.example.armovie.data.entity.TvShow.TvShowDetail
 import com.example.armovie.data.entity.TvShowList.TvShowList
 import com.example.armovie.data.entity.credits.MovieCredit
 import com.example.armovie.data.entity.movieList.movieList
-import com.example.armovie.data.entity.search.SearchMovie
+import com.example.armovie.data.entity.search.movie.SearchMovieResponse
 import com.example.armovie.data.entity.movie.movieDetail
+import com.example.armovie.data.entity.search.tvShow.SearchTvShowResponse
 import com.example.armovie.data.network.TMDBApiService
 import com.example.armovie.utility.NoConnectivityException
 
@@ -36,8 +37,8 @@ class MovieNetworkDataSourceImpl(
     override val movieCredits: LiveData<MovieCredit>
         get() = _movieCredits
 
-    private val _searchMovie = MutableLiveData<SearchMovie>()
-    override val searchMovie: LiveData<SearchMovie>
+    private val _searchMovie = MutableLiveData<SearchMovieResponse>()
+    override val searchMovie: LiveData<SearchMovieResponse>
         get() = _searchMovie
 
 
@@ -48,6 +49,10 @@ class MovieNetworkDataSourceImpl(
     private val _tvShowDetail = MutableLiveData<TvShowDetail>()
     override val tvShowDetail: LiveData<TvShowDetail>
         get() = _tvShowDetail
+
+    private val _searchTvShow = MutableLiveData<SearchTvShowResponse>()
+    override val searchTvShow: LiveData<SearchTvShowResponse>
+        get() = _searchTvShow
 
     override suspend fun fetchPopularMovieList() {
         try {
@@ -133,5 +138,15 @@ class MovieNetworkDataSourceImpl(
             Log.e("Connectivity", "No internet connection", e)
         }
 
+    }
+
+    override suspend fun fetchSearchedTvShows(query: String) {
+        try {
+            val fetchSearchTvShowResult = tmdbApiService.searchTvShowAsync(query).await()
+            _searchTvShow.postValue(fetchSearchTvShowResult)
+
+        } catch (e: NoConnectivityException) {
+            Log.e("Connectivity", "No internet connection", e)
+        }
     }
 }

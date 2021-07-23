@@ -5,11 +5,11 @@ import com.example.armovie.data.repository.MovieRepository
 import com.example.armovie.utility.lazyDeferred
 
 class SearchViewModel(
-    private val movieRepository: MovieRepository
+    //private val movieRepository: MovieRepository
 ) : ViewModel() {
 
 
-    val searchMovieResult by lazyDeferred {
+   /* val searchMovieResult by lazyDeferred {
         movieRepository.getSearchMovies("black widow")
-    }
+    }*/
 }
