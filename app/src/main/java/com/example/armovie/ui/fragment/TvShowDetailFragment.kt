@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.armovie.R
+import com.example.armovie.data.entity.TvShow.Season
 import com.example.armovie.data.entity.movie.Genre
 import com.example.armovie.data.network.BASE_IMAGE_MOVIE
 import com.example.armovie.databinding.MovieDetailFragmentBinding
@@ -18,6 +19,7 @@ import com.example.armovie.databinding.TvShowDetailFragmentBinding
 import com.example.armovie.databinding.TvShowsFragmentBinding
 import com.example.armovie.ui.base.ScopedFragment
 import com.example.armovie.ui.itemRecyclerView.GenreItemRecyclerView
+import com.example.armovie.ui.itemRecyclerView.SeasonItemRecyclerView
 import com.example.armovie.ui.viewModel.MovieDetailViewModel
 import com.example.armovie.ui.viewModel.MovieDetailViewModelFactory
 import com.example.armovie.ui.viewModel.TvShowDetailViewModel
@@ -90,7 +92,16 @@ class TvShowDetailFragment : ScopedFragment(), KodeinAware {
                 .into(binding.posterImage)
 
             //Genre RecyclerView
-            initGenreRecyclerView(tvShowDetail.genres.toGenreItems(), binding.genreRecyclerView)
+            initGenreRecyclerView(
+                tvShowDetail.genres.toGenreItems(),
+                binding.genreRecyclerView
+            )
+
+            //Seasons RecyclerView
+            initSeasonRecyclerView(
+                tvShowDetail.seasons.toSeasonItems(),
+                binding.seasonsRecyclerView
+            )
 
             //number of episodes
             binding.numberOfEpisodes.text = tvShowDetail.numberOfEpisodes.toString()
@@ -129,8 +140,29 @@ class TvShowDetailFragment : ScopedFragment(), KodeinAware {
         }
     }
 
+
+    private fun initSeasonRecyclerView(
+        items: List<SeasonItemRecyclerView>,
+        recyclerView: RecyclerView
+    ) {
+        val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
+            addAll(items)
+        }
+
+        recyclerView.apply {
+            layoutManager =
+                LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = groupAdapter
+        }
+    }
+
+
     private fun List<Genre>.toGenreItems(): List<GenreItemRecyclerView> = this.map {
         GenreItemRecyclerView(it)
+    }
+
+    private fun List<Season>.toSeasonItems(): List<SeasonItemRecyclerView> = this.map {
+        SeasonItemRecyclerView(it)
     }
 
     override fun onDestroy() {

@@ -22,7 +22,8 @@
             android:adjustViewBounds="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/load" />
+            app:srcCompat="@drawable/load"
+            />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/poster_image"
@@ -249,7 +250,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appCompatTextView_seasons"/>
+            app:layout_constraintTop_toBottomOf="@id/appCompatTextView_seasons"
+            tools:itemCount="1"
+            tools:listitem="@layout/season_item"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/appCompatTextView_cast"

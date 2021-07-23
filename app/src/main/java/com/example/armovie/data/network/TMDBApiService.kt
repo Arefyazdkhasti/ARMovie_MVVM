@@ -62,7 +62,7 @@ interface TMDBApiService {
 
 
 
-    //https://api.themoviedb.org/3/discover/tv?page=1&api_key=cfbf3d30a57bf3a59b1fd9c68e829f1d
+    //https://api.themoviedb.org/3/tv/popular/?page=1&api_key=cfbf3d30a57bf3a59b1fd9c68e829f1d
     @GET("/$API_VERSION/discover/tv")
     fun getTvShowsAsync(
         @Query("page") page: Int
