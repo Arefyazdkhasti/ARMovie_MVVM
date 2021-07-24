@@ -1,6 +1,8 @@
 package com.example.armovie.data.network.response
 
 import androidx.lifecycle.LiveData
+import com.example.armovie.data.entity.Person.CombinedCredit
+import com.example.armovie.data.entity.Person.PersonDetail
 import com.example.armovie.data.entity.TvShow.TvShowDetail
 import com.example.armovie.data.entity.TvShowList.TvShowList
 import com.example.armovie.data.entity.credits.MovieCredit
@@ -42,4 +44,10 @@ interface MovieNetworkDataSource {
     val searchTvShow: LiveData<SearchTvShowResponse>
     suspend fun fetchSearchedTvShows(query: String, include_adult: Boolean)
 
+    //Person
+    val personDetail: LiveData<PersonDetail>
+    suspend fun fetchPersonDetail(personID:Int)
+
+    val personCombinedCredit : LiveData<CombinedCredit>
+    suspend fun fetchPersonCombinedCredit(personID: Int)
 }

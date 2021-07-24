@@ -41,6 +41,9 @@
         <argument
             android:name="movieID"
             app:argType="integer" />
+        <action
+            android:id="@+id/sendPersonID"
+            app:destination="@id/personFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -67,5 +70,17 @@
         <argument
             android:name="tvShowId"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/personFragment"
+        android:name="com.example.armovie.ui.fragment.PersonFragment"
+        android:label="person_fragment"
+        tools:layout="@layout/person_fragment" >
+        <argument
+            android:name="personID"
+            app:argType="integer" />
+        <action
+            android:id="@+id/sendMovieId"
+            app:destination="@id/movieDetailFragment" />
     </fragment>
 </navigation>

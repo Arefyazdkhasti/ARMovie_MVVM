@@ -1,6 +1,8 @@
 package com.example.armovie.data.repository
 
 import androidx.lifecycle.LiveData
+import com.example.armovie.data.entity.Person.CombinedCredit
+import com.example.armovie.data.entity.Person.PersonDetail
 import com.example.armovie.data.entity.TvShow.TvShowDetail
 import com.example.armovie.data.entity.TvShowList.TvShowList
 import com.example.armovie.data.entity.credits.MovieCredit
@@ -60,6 +62,16 @@ class MovieRepositoryImpl(
         return movieNetworkDataSource.searchTvShow
     }
 
+    override suspend fun getPersonDetail(personID: Int): LiveData<PersonDetail> {
+        fetchPersonDetail(personID)
+        return movieNetworkDataSource.personDetail
+    }
+
+    override suspend fun getPersonCombinedCredit(personID: Int): LiveData<CombinedCredit> {
+        fetchPersonCombinedCredit(personID)
+        return movieNetworkDataSource.personCombinedCredit
+    }
+
     private suspend fun fetchPopularMovie() {
         movieNetworkDataSource.fetchPopularMovieList()
     }
@@ -94,5 +106,13 @@ class MovieRepositoryImpl(
 
     private suspend fun fetchSearchedTvShow(query: String,include_adult:Boolean){
         movieNetworkDataSource.fetchSearchedTvShows(query,include_adult)
+    }
+
+    private suspend fun fetchPersonDetail(personID: Int){
+        movieNetworkDataSource.fetchPersonDetail(personID)
+    }
+
+    private suspend fun fetchPersonCombinedCredit(personID: Int){
+        movieNetworkDataSource.fetchPersonCombinedCredit(personID)
     }
 }

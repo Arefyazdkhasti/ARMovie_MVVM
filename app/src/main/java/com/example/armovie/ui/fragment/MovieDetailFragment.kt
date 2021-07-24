@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -154,7 +155,19 @@ class MovieDetailFragment : ScopedFragment(), KodeinAware {
             layoutManager = GridLayoutManager(this.context, 3, GridLayoutManager.HORIZONTAL, false)
             adapter = groupAdapter
         }
+
+        groupAdapter.setOnItemClickListener{ item, view ->
+            (item as? CastItemRecyclerView)?.let {
+                sendPersonID(it.cast.id,view)
+            }
+        }
     }
+
+    private fun sendPersonID(personID:Int,view: View){
+        val action = MovieDetailFragmentDirections.sendPersonID(personID)
+        Navigation.findNavController(view).navigate(action)
+    }
+
 
     private fun List<Genre>.toGenreItems(): List<GenreItemRecyclerView> = this.map {
         GenreItemRecyclerView(it)

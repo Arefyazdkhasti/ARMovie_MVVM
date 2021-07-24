@@ -30,6 +30,7 @@ class MovieApplication: Application(),KodeinAware{
         bind() from factory() { movieId:Int -> MovieDetailViewModelFactory(movieId,instance()) }
         bind() from factory() { tvShowId:Int -> TvShowDetailViewModelFactory(tvShowId,instance()) }
         bind() from factory() { searchQuery: SearchQuery -> SearchResultViewModelFactory(searchQuery,instance()) }
+        bind() from factory() { personID: Int -> PersonViewModelFactory(personID,instance()) }
 
     }
     override fun onCreate() {

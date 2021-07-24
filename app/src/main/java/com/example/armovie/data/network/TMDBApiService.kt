@@ -1,5 +1,7 @@
 package com.example.armovie.data.network
 
+import com.example.armovie.data.entity.Person.CombinedCredit
+import com.example.armovie.data.entity.Person.PersonDetail
 import com.example.armovie.data.entity.TvShow.TvShowDetail
 import com.example.armovie.data.entity.TvShowList.TvShowList
 import com.example.armovie.data.entity.credits.MovieCredit
@@ -83,6 +85,17 @@ interface TMDBApiService {
         @Query("include_adult") include_adult:Boolean
     ): Deferred<SearchTvShowResponse>
 
+    //https://api.themoviedb.org/3/person/287?api_key=cfbf3d30a57bf3a59b1fd9c68e829f1d
+    @GET("/$API_VERSION/person/{id}")
+    fun getPersonDetailAsync(
+        @Path("id") id: Int
+    ): Deferred<PersonDetail>
+
+    //https://api.themoviedb.org/3/person/1245/combined_credits?api_key=cfbf3d30a57bf3a59b1fd9c68e829f1d
+    @GET("/$API_VERSION/person/{id}/combined_credits")
+    fun getPersonCombinedCreditAsync(
+        @Path("id") id: Int
+    ): Deferred<CombinedCredit>
 
     companion object {
         operator fun invoke(

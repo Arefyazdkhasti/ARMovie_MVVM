@@ -3,6 +3,8 @@ package com.example.armovie.data.network.response
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.armovie.data.entity.Person.CombinedCredit
+import com.example.armovie.data.entity.Person.PersonDetail
 import com.example.armovie.data.entity.TvShow.TvShowDetail
 import com.example.armovie.data.entity.TvShowList.TvShowList
 import com.example.armovie.data.entity.credits.MovieCredit
@@ -53,6 +55,14 @@ class MovieNetworkDataSourceImpl(
     private val _searchTvShow = MutableLiveData<SearchTvShowResponse>()
     override val searchTvShow: LiveData<SearchTvShowResponse>
         get() = _searchTvShow
+
+    private val _personDetail = MutableLiveData<PersonDetail>()
+    override val personDetail: LiveData<PersonDetail>
+        get() = _personDetail
+
+    private val _personCombinedCredit = MutableLiveData<CombinedCredit>()
+    override val personCombinedCredit: LiveData<CombinedCredit>
+        get() = _personCombinedCredit
 
     override suspend fun fetchPopularMovieList() {
         try {
@@ -109,9 +119,9 @@ class MovieNetworkDataSourceImpl(
         }
     }
 
-    override suspend fun fetchSearchedMovies(query: String,include_adult:Boolean) {
+    override suspend fun fetchSearchedMovies(query: String, include_adult: Boolean) {
         try {
-            val fetchSearchedMovies = tmdbApiService.searchMovieAsync(query,include_adult).await()
+            val fetchSearchedMovies = tmdbApiService.searchMovieAsync(query, include_adult).await()
             _searchMovie.postValue(fetchSearchedMovies)
 
         } catch (e: NoConnectivityException) {
@@ -129,7 +139,7 @@ class MovieNetworkDataSourceImpl(
         }
     }
 
-    override suspend fun fetchTvShowDetail(tvShowId:Int) {
+    override suspend fun fetchTvShowDetail(tvShowId: Int) {
         try {
             val fetchTvShowDetail = tmdbApiService.getTvShowsDetailsAsync(tvShowId).await()
             _tvShowDetail.postValue(fetchTvShowDetail)
@@ -140,10 +150,31 @@ class MovieNetworkDataSourceImpl(
 
     }
 
-    override suspend fun fetchSearchedTvShows(query: String,include_adult:Boolean) {
+    override suspend fun fetchSearchedTvShows(query: String, include_adult: Boolean) {
         try {
-            val fetchSearchTvShowResult = tmdbApiService.searchTvShowAsync(query,include_adult).await()
+            val fetchSearchTvShowResult =
+                tmdbApiService.searchTvShowAsync(query, include_adult).await()
             _searchTvShow.postValue(fetchSearchTvShowResult)
+
+        } catch (e: NoConnectivityException) {
+            Log.e("Connectivity", "No internet connection", e)
+        }
+    }
+
+    override suspend fun fetchPersonDetail(personID:Int) {
+        try {
+            val fetchPersonDetail = tmdbApiService.getPersonDetailAsync(personID).await()
+            _personDetail.postValue(fetchPersonDetail)
+
+        } catch (e: NoConnectivityException) {
+            Log.e("Connectivity", "No internet connection", e)
+        }
+    }
+
+    override suspend fun fetchPersonCombinedCredit(personID: Int) {
+        try {
+            val fetchCombinedCredit = tmdbApiService.getPersonCombinedCreditAsync(personID).await()
+            _personCombinedCredit.postValue(fetchCombinedCredit)
 
         } catch (e: NoConnectivityException) {
             Log.e("Connectivity", "No internet connection", e)

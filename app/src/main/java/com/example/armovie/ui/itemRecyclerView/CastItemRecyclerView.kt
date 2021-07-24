@@ -8,7 +8,7 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.cast_item.view.*
 
-class CastItemRecyclerView (private val cast: Cast): Item<GroupieViewHolder>() {
+class CastItemRecyclerView (val cast: Cast): Item<GroupieViewHolder>() {
 
     override fun getLayout(): Int = R.layout.cast_item
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {

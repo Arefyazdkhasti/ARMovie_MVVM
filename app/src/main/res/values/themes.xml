@@ -17,7 +17,6 @@
         <item name="colorControlActivated">@color/purple_200</item>
         <!-- Inactive thumb color -->
         <item name="colorSwitchThumbNormal">@color/purple_500</item>
-        <!-- Inactive track color(30% transparency) -->
-        <item name="android:colorForeground">@color/purple_700</item>
+
     </style>
 </resources>
