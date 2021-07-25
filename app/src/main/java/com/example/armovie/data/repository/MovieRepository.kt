@@ -5,6 +5,7 @@ import com.example.armovie.data.entity.Person.CombinedCredit
 import com.example.armovie.data.entity.Person.PersonDetail
 import com.example.armovie.data.entity.TvShow.TvShowDetail
 import com.example.armovie.data.entity.TvShowList.TvShowList
+import com.example.armovie.data.entity.Video.VideoList
 import com.example.armovie.data.entity.credits.MovieCredit
 import com.example.armovie.data.entity.movieList.movieList
 import com.example.armovie.data.entity.search.movie.SearchMovieResponse
@@ -34,4 +35,6 @@ interface MovieRepository {
     suspend fun getPersonDetail(personID:Int) : LiveData<PersonDetail>
 
     suspend fun getPersonCombinedCredit(personID: Int): LiveData<CombinedCredit>
+
+    suspend fun getMovieVideos(movieID: Int): LiveData<VideoList>
 }

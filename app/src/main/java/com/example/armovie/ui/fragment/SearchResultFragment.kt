@@ -18,6 +18,7 @@ import com.example.armovie.ui.adpter.RecyclerItemTvShowAdapterHome
 import com.example.armovie.ui.base.ScopedFragment
 import com.example.armovie.ui.viewModel.SearchResultViewModel
 import com.example.armovie.ui.viewModel.SearchResultViewModelFactory
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
@@ -47,7 +48,7 @@ class SearchResultFragment : ScopedFragment(), KodeinAware {
         super.onActivityCreated(savedInstanceState)
         val safeArgs = arguments?.let { SearchResultFragmentArgs.fromBundle(it) }
         val searchQuery = safeArgs?.searchQuery
-        if (searchQuery != null){
+        if (searchQuery != null) {
             viewModel = ViewModelProvider(
                 this,
                 viewModelFactoryInstanceFactory(searchQuery)
@@ -56,7 +57,7 @@ class SearchResultFragment : ScopedFragment(), KodeinAware {
         bindUI()
     }
 
-    private fun bindUI() = launch{
+    private fun bindUI() = launch {
         val movieResult = viewModel.searchMovieResult.await()
         val tvShowResult = viewModel.searchTvShowResult.await()
 
@@ -64,17 +65,30 @@ class SearchResultFragment : ScopedFragment(), KodeinAware {
         binding.tvShowsSearchResultRecyclerView.showShimmerAdapter()
 
         movieResult.observe(viewLifecycleOwner, Observer { result ->
-            if(result == null) return@Observer
+            if (result == null) return@Observer
 
             binding.movieSearchResultRecyclerView.hideShimmerAdapter()
+
+            //if no result hide recyclerView
+            if (result.searchResults.isEmpty()) {
+                binding.movieSearchResultRecyclerView.visibility = View.INVISIBLE
+                binding.noResultMovie.visibility = View.VISIBLE
+            }
+
             //initialize movie recycler view
             initMovieResultRecyclerView(result.searchResults, binding.movieSearchResultRecyclerView)
         })
 
         tvShowResult.observe(viewLifecycleOwner, Observer { result ->
-            if(result == null) return@Observer
+            if (result == null) return@Observer
 
             binding.tvShowsSearchResultRecyclerView.hideShimmerAdapter()
+
+            //if no result hide recyclerView
+            if (result.results.isEmpty()) {
+                binding.tvShowsSearchResultRecyclerView.visibility = View.INVISIBLE
+                binding.noResultTvShow.visibility = View.VISIBLE
+            }
             //initialize tv show recycler view
             initTVShowResultRecyclerView(result.results, binding.tvShowsSearchResultRecyclerView)
         })
@@ -85,6 +99,7 @@ class SearchResultFragment : ScopedFragment(), KodeinAware {
         searchResults: List<movieItem>,
         recyclerView: RecyclerView
     ) {
+
         val groupAdapter = RecyclerItemMovieAdapterMovie(requireContext(), searchResults)
         recyclerView.apply {
             adapter = groupAdapter

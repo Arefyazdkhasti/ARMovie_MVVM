@@ -4,6 +4,7 @@ import com.example.armovie.data.entity.Person.CombinedCredit
 import com.example.armovie.data.entity.Person.PersonDetail
 import com.example.armovie.data.entity.TvShow.TvShowDetail
 import com.example.armovie.data.entity.TvShowList.TvShowList
+import com.example.armovie.data.entity.Video.VideoList
 import com.example.armovie.data.entity.credits.MovieCredit
 import com.example.armovie.data.entity.movieList.movieList
 import com.example.armovie.data.entity.search.movie.SearchMovieResponse
@@ -23,6 +24,10 @@ const val API_VERSION = 3
 const val API_KEY = "cfbf3d30a57bf3a59b1fd9c68e829f1d"
 const val BASE_URL_MOVIE = "https://api.themoviedb.org/"
 const val BASE_IMAGE_MOVIE = "https://image.tmdb.org/t/p/w185/"
+const val BASE_YOUTUBE_WATCH_URL = "https://www.youtube.com/watch?v="
+const val BASE_YOUTUBE_IMAGE_URL = "https://img.youtube.com/vi/"
+
+const val BASE_YOUTUBE_NAME= "YouTube"
 
 interface TMDBApiService {
 
@@ -96,6 +101,13 @@ interface TMDBApiService {
     fun getPersonCombinedCreditAsync(
         @Path("id") id: Int
     ): Deferred<CombinedCredit>
+
+
+    //https://api.themoviedb.org/3/movie/497698/videos?api_key=cfbf3d30a57bf3a59b1fd9c68e829f1d
+    @GET("/$API_VERSION/movie/{id}/videos")
+    fun getMovieVideoListAsync(
+        @Path("id")id :Int
+    ):Deferred<VideoList>
 
     companion object {
         operator fun invoke(

@@ -222,6 +222,29 @@
 
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView_Videos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/standard_margin"
+                android:text="@string/videos"
+                android:textColor="@color/black"
+                android:textSize="@dimen/extra_font"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/overview" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/video_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/appCompatTextView_Videos"
+                tools:itemCount="1"
+                tools:listitem="@layout/video_item"
+                android:padding="@dimen/standard_margin"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/appCompatTextView_cast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -231,7 +254,7 @@
                 android:textSize="@dimen/extra_font"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/overview" />
+                app:layout_constraintTop_toBottomOf="@id/video_recycler_view" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cast_recycler_view"

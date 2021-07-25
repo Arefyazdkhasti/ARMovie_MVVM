@@ -17,4 +17,8 @@ class MovieDetailViewModel(
     val movieCredits by lazyDeferred {
         movieRepository.getMovieCredits(movieID)
     }
+
+    val movieVideo by lazyDeferred {
+        movieRepository.getMovieVideos(movieID)
+    }
 }

@@ -26,9 +26,10 @@
     <string name="type_here">Type here</string>
     <string name="search_hint">Search whole or a part of your willing Movies or TV Shows title</string>
     <string name="include_adult">Include Adult</string>
-    <string name="include_adult_hint">Choose whether to include adult(pornography) content in the results.</string>
+    <string name="include_adult_hint">Choose whether to include adult content in the results.</string>
     <string name="birthday">Birthday</string>
     <string name="place_of_birth">Place Of Birth</string>
     <string name="known_for">Known For</string>
     <string name="biography">Biography</string>
+    <string name="videos">Videos</string>
 </resources>

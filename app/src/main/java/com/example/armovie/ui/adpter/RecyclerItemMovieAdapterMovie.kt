@@ -17,8 +17,7 @@ import kotlinx.android.synthetic.main.movie_item.view.*
 class RecyclerItemMovieAdapterMovie(
     private val context: Context,
     private val data: List<movieItem>
-    ) : RecyclerView.Adapter<RecyclerItemMovieAdapterMovie.ItemMovieViewHolder>() {
-
+) : RecyclerView.Adapter<RecyclerItemMovieAdapterMovie.ItemMovieViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemMovieViewHolder =
@@ -31,20 +30,19 @@ class RecyclerItemMovieAdapterMovie(
         )
 
     override fun onBindViewHolder(holder: ItemMovieViewHolder, position: Int) {
-        holder.setData(data[position],position)
+        holder.setData(data[position], position)
     }
 
     override fun getItemCount() = data.size
 
 
-    inner class ItemMovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-         {
+    inner class ItemMovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val rootView = itemView.movie_image
         private val image = itemView.movie_image
         private val title = itemView.movie_name
 
-        fun setData(movieItem: movieItem,position: Int) {
+        fun setData(movieItem: movieItem, position: Int) {
 
             image.clipToOutline = true
             GlideApp.with(context)

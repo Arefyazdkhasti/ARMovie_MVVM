@@ -7,6 +7,7 @@ import com.example.armovie.data.entity.Person.CombinedCredit
 import com.example.armovie.data.entity.Person.PersonDetail
 import com.example.armovie.data.entity.TvShow.TvShowDetail
 import com.example.armovie.data.entity.TvShowList.TvShowList
+import com.example.armovie.data.entity.Video.VideoList
 import com.example.armovie.data.entity.credits.MovieCredit
 import com.example.armovie.data.entity.movieList.movieList
 import com.example.armovie.data.entity.search.movie.SearchMovieResponse
@@ -63,6 +64,10 @@ class MovieNetworkDataSourceImpl(
     private val _personCombinedCredit = MutableLiveData<CombinedCredit>()
     override val personCombinedCredit: LiveData<CombinedCredit>
         get() = _personCombinedCredit
+
+    private val _movieVideos = MutableLiveData<VideoList>()
+    override val movieVideos: LiveData<VideoList>
+        get() = _movieVideos
 
     override suspend fun fetchPopularMovieList() {
         try {
@@ -161,7 +166,7 @@ class MovieNetworkDataSourceImpl(
         }
     }
 
-    override suspend fun fetchPersonDetail(personID:Int) {
+    override suspend fun fetchPersonDetail(personID: Int) {
         try {
             val fetchPersonDetail = tmdbApiService.getPersonDetailAsync(personID).await()
             _personDetail.postValue(fetchPersonDetail)
@@ -175,6 +180,16 @@ class MovieNetworkDataSourceImpl(
         try {
             val fetchCombinedCredit = tmdbApiService.getPersonCombinedCreditAsync(personID).await()
             _personCombinedCredit.postValue(fetchCombinedCredit)
+
+        } catch (e: NoConnectivityException) {
+            Log.e("Connectivity", "No internet connection", e)
+        }
+    }
+
+    override suspend fun fetchMovieVideos(movieId: Int) {
+        try {
+            val fetchMovieVideo = tmdbApiService.getMovieVideoListAsync(movieId).await()
+            _movieVideos.postValue(fetchMovieVideo)
 
         } catch (e: NoConnectivityException) {
             Log.e("Connectivity", "No internet connection", e)

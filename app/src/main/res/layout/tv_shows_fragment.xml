@@ -18,7 +18,7 @@
         tools:listitem="@layout/tv_show_item"
         />
 
-    <androidx.appcompat.widget.AppCompatImageView
+   <!-- <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="25dp"
         android:layout_height="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/appCompatEditText"
@@ -49,6 +49,6 @@
         app:layout_constraintStart_toEndOf="@+id/appCompatEditText"
         app:layout_constraintTop_toTopOf="@+id/appCompatEditText"
         app:srcCompat="@drawable/ic_arrow_forward"
-        android:layout_marginStart="@dimen/large_margin"/>
+        android:layout_marginStart="@dimen/large_margin"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

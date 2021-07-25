@@ -5,6 +5,7 @@ import com.example.armovie.data.entity.Person.CombinedCredit
 import com.example.armovie.data.entity.Person.PersonDetail
 import com.example.armovie.data.entity.TvShow.TvShowDetail
 import com.example.armovie.data.entity.TvShowList.TvShowList
+import com.example.armovie.data.entity.Video.VideoList
 import com.example.armovie.data.entity.credits.MovieCredit
 import com.example.armovie.data.entity.movieList.movieList
 import com.example.armovie.data.entity.search.movie.SearchMovieResponse
@@ -72,6 +73,11 @@ class MovieRepositoryImpl(
         return movieNetworkDataSource.personCombinedCredit
     }
 
+    override suspend fun getMovieVideos(movieID: Int): LiveData<VideoList> {
+        fetchMovieVideos(movieID)
+        return movieNetworkDataSource.movieVideos
+    }
+
     private suspend fun fetchPopularMovie() {
         movieNetworkDataSource.fetchPopularMovieList()
     }
@@ -114,5 +120,9 @@ class MovieRepositoryImpl(
 
     private suspend fun fetchPersonCombinedCredit(personID: Int){
         movieNetworkDataSource.fetchPersonCombinedCredit(personID)
+    }
+
+    private suspend fun fetchMovieVideos(movieID: Int){
+        movieNetworkDataSource.fetchMovieVideos(movieID)
     }
 }
