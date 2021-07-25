@@ -14,9 +14,9 @@
         <!-- Customize your theme here. -->
         <item name="autoCompleteTextViewStyle">@style/cursorColor</item>
         <!-- Active thumb color & Active track color(30% transparency) -->
-        <item name="colorControlActivated">@color/purple_200</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
         <!-- Inactive thumb color -->
-        <item name="colorSwitchThumbNormal">@color/purple_500</item>
+        <item name="colorSwitchThumbNormal">@color/colorPrimaryDark</item>
 
     </style>
 </resources>

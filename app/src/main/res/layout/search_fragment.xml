@@ -12,7 +12,7 @@
         android:layout_height="75dp"
         android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/standard_margin"
-        android:tint="@color/purple_500"
+        android:tint="@color/colorPrimary"
         app:srcCompat="@drawable/ic_search"
         />
 
@@ -25,7 +25,7 @@
         android:layout_marginBottom="@dimen/small_margin"
         android:padding="@dimen/standard_margin"
         android:text="@string/search_hint"
-        android:textColor="@color/purple_500"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/standard_font" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -67,6 +67,7 @@
         android:valueFrom="0"
         android:valueTo="10"
         app:values="@array/initial_slider_values"
+        android:theme="@style/RangeSlideTheme"
         />
 
     <androidx.appcompat.widget.SwitchCompat
@@ -100,7 +101,7 @@
         android:layout_margin="@dimen/standard_margin"
         android:background="@drawable/bg_search_btn"
         android:text="@string/search"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/include_adult_hint"
         />

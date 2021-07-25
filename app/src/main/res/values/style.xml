@@ -10,4 +10,8 @@
         <item name="android:textCursorDrawable">@drawable/cursor</item>
     </style>
 
+    <style name="RangeSlideTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/colorPrimary</item>
+    </style>
+
 </resources>
