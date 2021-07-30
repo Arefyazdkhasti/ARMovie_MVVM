@@ -43,13 +43,13 @@ Model-View-ViewModel
 <p align = "left" >
   <img width="250" height="500" src="images/Home.PNG">
   <img width="250" height="500"  src="images/Search.PNG"> 
-  <img width="250" height="500" src="github_images/TvShow.png"> 
+  <img width="250" height="500" src="github_images/TvShow.PNG"> 
 </p>
 
 ### Movie, TV Show and Person Details
 
 <p align = "left" >
-  <img width="250" height="500" src="github_images/MovieDetail1.png">
-  <img width="250" height="500"  src="github_images/MovieDetail2.png"> 
-  <img width="250" height="500" src="github_images/TvShowDetail.png"> 
+  <img width="250" height="500" src="github_images/MovieDetail1.PNG">
+  <img width="250" height="500"  src="github_images/MovieDetail2.PNG"> 
+  <img width="250" height="500" src="github_images/TvShowDetail.PNG"> 
 </p>
