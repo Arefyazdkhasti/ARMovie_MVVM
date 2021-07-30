@@ -36,6 +36,8 @@ Model-View-ViewModel
 
 **Person details:** name, biography, photos and known for
 
+**Search:** Search through thousands of movies and tv show
+
 ## Screenshots
 
 ### Bottom navigation
