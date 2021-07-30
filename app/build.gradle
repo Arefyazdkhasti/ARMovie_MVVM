@@ -83,9 +83,6 @@ dependencies {
     implementation "org.kodein.di:kodein-di-generic-jvm:5.2.0"
     implementation "org.kodein.di:kodein-di-framework-android-x:5.2.0"
 
-    // Better dateTime-time support even on older Android versions
-    implementation "com.jakewharton.threetenabp:threetenabp:1.1.0"
-
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     kapt 'com.github.bumptech.glide:compiler:4.9.0'
@@ -97,10 +94,6 @@ dependencies {
 
     // Preference
     implementation "androidx.preference:preference-ktx:1.1.1"
-
-    // WeatherLocation
-    implementation "com.google.android.gms:play-services-location:18.0.0"
-
 
     // New Material Design
     implementation "com.google.android.material:material:1.4.0"
