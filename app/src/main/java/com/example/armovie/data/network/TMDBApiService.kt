@@ -10,6 +10,7 @@ import com.example.armovie.data.entity.movieList.movieList
 import com.example.armovie.data.entity.search.movie.SearchMovieResponse
 import com.example.armovie.data.entity.movie.movieDetail
 import com.example.armovie.data.entity.search.tvShow.SearchTvShowResponse
+import com.example.armovie.data.entity.trending.TrendingList
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
@@ -106,8 +107,14 @@ interface TMDBApiService {
     //https://api.themoviedb.org/3/movie/497698/videos?api_key=cfbf3d30a57bf3a59b1fd9c68e829f1d
     @GET("/$API_VERSION/movie/{id}/videos")
     fun getMovieVideoListAsync(
-        @Path("id")id :Int
+        @Path("id")id: Int
     ):Deferred<VideoList>
+
+
+    //https://api.themoviedb.org/3/trending/all/day?api_key=cfbf3d30a57bf3a59b1fd9c68e829f1d
+    @GET("/$API_VERSION/trending/all/day")
+    fun getTrendingListAsync(
+    ):Deferred<TrendingList>
 
     companion object {
         operator fun invoke(

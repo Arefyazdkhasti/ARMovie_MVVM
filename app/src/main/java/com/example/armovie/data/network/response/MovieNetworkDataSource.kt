@@ -11,6 +11,7 @@ import com.example.armovie.data.entity.movieList.movieList
 import com.example.armovie.data.entity.search.movie.SearchMovieResponse
 import com.example.armovie.data.entity.movie.movieDetail
 import com.example.armovie.data.entity.search.tvShow.SearchTvShowResponse
+import com.example.armovie.data.entity.trending.TrendingList
 
 interface MovieNetworkDataSource {
 
@@ -55,4 +56,8 @@ interface MovieNetworkDataSource {
     //Videos
     val movieVideos : LiveData<VideoList>
     suspend fun fetchMovieVideos(movieId: Int)
+
+    //Trending
+    val trendingList: LiveData<TrendingList>
+    suspend fun fetchTrendingList()
 }

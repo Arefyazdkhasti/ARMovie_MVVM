@@ -13,6 +13,7 @@ import com.example.armovie.data.entity.movieList.movieList
 import com.example.armovie.data.entity.search.movie.SearchMovieResponse
 import com.example.armovie.data.entity.movie.movieDetail
 import com.example.armovie.data.entity.search.tvShow.SearchTvShowResponse
+import com.example.armovie.data.entity.trending.TrendingList
 import com.example.armovie.data.network.TMDBApiService
 import com.example.armovie.utility.NoConnectivityException
 
@@ -68,6 +69,10 @@ class MovieNetworkDataSourceImpl(
     private val _movieVideos = MutableLiveData<VideoList>()
     override val movieVideos: LiveData<VideoList>
         get() = _movieVideos
+
+    private val _trendingList = MutableLiveData<TrendingList>()
+    override val trendingList: LiveData<TrendingList>
+        get() = _trendingList
 
     override suspend fun fetchPopularMovieList() {
         try {
@@ -190,6 +195,16 @@ class MovieNetworkDataSourceImpl(
         try {
             val fetchMovieVideo = tmdbApiService.getMovieVideoListAsync(movieId).await()
             _movieVideos.postValue(fetchMovieVideo)
+
+        } catch (e: NoConnectivityException) {
+            Log.e("Connectivity", "No internet connection", e)
+        }
+    }
+
+    override suspend fun fetchTrendingList() {
+        try {
+            val fetchTrendingList = tmdbApiService.getTrendingListAsync().await()
+            _trendingList.postValue(fetchTrendingList)
 
         } catch (e: NoConnectivityException) {
             Log.e("Connectivity", "No internet connection", e)

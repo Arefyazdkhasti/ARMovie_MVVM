@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.armovie.data.entity.TvShow.TvShowDetail
 import com.example.armovie.data.entity.TvShowList.TvShow
 import com.example.armovie.databinding.TvShowsFragmentBinding
-import com.example.armovie.ui.adpter.RecyclerItemTvShowAdapterHome
 import com.example.armovie.ui.base.ScopedFragment
 import com.example.armovie.ui.itemRecyclerView.TvShowItemRecyclerView
 import com.example.armovie.ui.viewModel.TVShowsViewModel
@@ -64,19 +64,24 @@ class TVShowsFragment : ScopedFragment(), KodeinAware {
 
             binding.tvShowsRecyclerView.hideShimmerAdapter()
 
-            initTvShowRecycler(tvShowList.results/*.toTvShowItems()*/, binding.tvShowsRecyclerView)
+            initTvShowRecycler(tvShowList.results.toTvShowItems(), binding.tvShowsRecyclerView)
 
         })
     }
 
-    private fun initTvShowRecycler(data: List<TvShow>, recyclerView: RecyclerView) {
-        /*val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
+    private fun initTvShowRecycler(data: List<TvShowItemRecyclerView>, recyclerView: RecyclerView) {
+        val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
             addAll(data)
-        }*/
-        val groupAdapter = RecyclerItemTvShowAdapterHome(requireContext(),data)
+        }
         recyclerView.apply {
             adapter = groupAdapter
             layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+        }
+        groupAdapter.setOnItemClickListener { item, view ->
+            (item as? TvShowItemRecyclerView)?.let {
+                val actionDetail = SearchResultFragmentDirections.sendTvShowId(it.tvShow.id)
+                Navigation.findNavController(view).navigate(actionDetail)
+            }
         }
     }
 

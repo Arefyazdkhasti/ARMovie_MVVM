@@ -2,8 +2,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'kotlin-android-extensions'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -35,9 +35,6 @@ android {
 
     buildFeatures {
         viewBinding = true
-    }
-    androidExtensions {
-        experimental = true
     }
 }
 
@@ -114,11 +111,6 @@ dependencies {
     //facebook shimmer animation
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
 
-    //Exo PLayer
-    implementation 'com.google.android.exoplayer:exoplayer:2.14.2'
-    implementation 'com.google.android.exoplayer:exoplayer-core:2.14.2'
-    implementation 'com.google.android.exoplayer:exoplayer-dash:2.14.2'
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.14.2'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

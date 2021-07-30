@@ -11,6 +11,7 @@ import com.example.armovie.data.entity.movieList.movieList
 import com.example.armovie.data.entity.search.movie.SearchMovieResponse
 import com.example.armovie.data.entity.movie.movieDetail
 import com.example.armovie.data.entity.search.tvShow.SearchTvShowResponse
+import com.example.armovie.data.entity.trending.TrendingList
 import com.example.armovie.data.network.response.MovieNetworkDataSource
 
 class MovieRepositoryImpl(
@@ -78,6 +79,11 @@ class MovieRepositoryImpl(
         return movieNetworkDataSource.movieVideos
     }
 
+    override suspend fun getTrendingList(): LiveData<TrendingList> {
+        fetchTrendingList()
+        return movieNetworkDataSource.trendingList
+    }
+
     private suspend fun fetchPopularMovie() {
         movieNetworkDataSource.fetchPopularMovieList()
     }
@@ -124,5 +130,9 @@ class MovieRepositoryImpl(
 
     private suspend fun fetchMovieVideos(movieID: Int){
         movieNetworkDataSource.fetchMovieVideos(movieID)
+    }
+
+    private suspend fun fetchTrendingList(){
+        movieNetworkDataSource.fetchTrendingList()
     }
 }

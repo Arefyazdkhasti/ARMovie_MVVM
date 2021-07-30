@@ -11,6 +11,7 @@ import com.example.armovie.data.entity.movieList.movieList
 import com.example.armovie.data.entity.search.movie.SearchMovieResponse
 import com.example.armovie.data.entity.movie.movieDetail
 import com.example.armovie.data.entity.search.tvShow.SearchTvShowResponse
+import com.example.armovie.data.entity.trending.TrendingList
 
 interface MovieRepository {
 
@@ -37,4 +38,6 @@ interface MovieRepository {
     suspend fun getPersonCombinedCredit(personID: Int): LiveData<CombinedCredit>
 
     suspend fun getMovieVideos(movieID: Int): LiveData<VideoList>
+
+    suspend fun getTrendingList(): LiveData<TrendingList>
 }

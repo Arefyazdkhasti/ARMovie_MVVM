@@ -10,15 +10,12 @@ import com.example.armovie.data.network.BASE_YOUTUBE_NAME
 import com.example.armovie.data.network.BASE_YOUTUBE_WATCH_URL
 import com.example.armovie.databinding.VideoItemBinding
 import com.example.armovie.utility.GlideApp
-import com.google.android.exoplayer2.Player
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
-import kotlinx.android.synthetic.main.cast_item.view.*
-import kotlinx.android.synthetic.main.video_item.view.*
 
 
 class VideoItemRecyclerView(val video: VideoResult, private val context: Context) :
-    Item<GroupieViewHolder>(), Player.EventListener {
+    Item<GroupieViewHolder>() {
 
     override fun getLayout(): Int = R.layout.video_item
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {

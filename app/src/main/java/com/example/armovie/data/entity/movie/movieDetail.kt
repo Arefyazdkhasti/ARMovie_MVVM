@@ -3,7 +3,7 @@ package com.example.armovie.data.entity.movie
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class movieDetail(
@@ -14,13 +14,13 @@ data class movieDetail(
     //@SerializedName("belongs_to_collection")
     //val belongsToCollection: BelongsToCollection,
     @SerializedName("budget")
-    val budget: Int,
+    val budget: Float,
     @SerializedName("genres")
     val genres: List<Genre>,
     @SerializedName("homepage")
     val homepage: String,
     @SerializedName("id")
-    val id: Int,
+    val id: Float,
     @SerializedName("imdb_id")
     val imdbId: String,
     @SerializedName("original_language")
@@ -40,9 +40,9 @@ data class movieDetail(
     @SerializedName("release_date")
     val releaseDate: String,
     @SerializedName("revenue")
-    val revenue: Int,
+    val revenue: Float,
     @SerializedName("runtime")
-    val runtime: Int,
+    val runtime: Float,
     @SerializedName("spoken_languages")
     val spokenLanguages: List<SpokenLanguage>,
     @SerializedName("status")
@@ -56,5 +56,5 @@ data class movieDetail(
     @SerializedName("vote_average")
     val voteAverage: Double,
     @SerializedName("vote_count")
-    val voteCount: Int
+    val voteCount: Float
 ):Parcelable

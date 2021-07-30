@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
         <com.example.armovie.ui.custom.MovieView
             android:id="@+id/popular_recycler_view"
             android:layout_width="match_parent"

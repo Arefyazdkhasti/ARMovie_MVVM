@@ -31,7 +31,6 @@ import com.example.armovie.utility.BlurTransformation
 import com.example.armovie.utility.GlideApp
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
-import kotlinx.android.synthetic.main.movie_detail_fragment.*
 import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
@@ -115,14 +114,13 @@ class MovieDetailFragment : ScopedFragment(), KodeinAware {
             binding.voteAverage.text = movie_detail.voteAverage.toString()
 
             //runtime
-            binding.runtime.text = movie_detail.runtime.toString() + "min"
+            binding.runtime.text = movie_detail.runtime.toInt().toString() + "min"
 
             //overview
             binding.overview.text = movie_detail.overview
 
             //tag line
             binding.tagline.text = movie_detail.tagline
-
         })
 
         val movieCredits = viewModel.movieCredits.await()
@@ -188,7 +186,6 @@ class MovieDetailFragment : ScopedFragment(), KodeinAware {
             adapter = groupAdapter
         }
 
-        //TODO make it work with functional ExoPlayer
         groupAdapter.setOnItemClickListener { item, view ->
             (item as? VideoItemRecyclerView)?.let {
                 openInBrowser(BASE_YOUTUBE_WATCH_URL+it.video.key)

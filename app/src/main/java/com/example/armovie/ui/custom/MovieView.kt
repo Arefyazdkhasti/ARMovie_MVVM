@@ -4,11 +4,12 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cooltechworks.views.shimmer.ShimmerRecyclerView
 import com.example.armovie.R
 import com.example.armovie.data.entity.movieList.movieItem
-import com.example.armovie.ui.adpter.RecyclerItemMovieAdapterHome
+import com.example.armovie.ui.fragment.HomeFragmentDirections
 import com.example.armovie.ui.itemRecyclerView.MovieItemRecyclerView
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -57,10 +58,11 @@ class MovieView(
     fun initRecycler(data: List<movieItem>, type: String) {
 
         movieRecycleView.showShimmerAdapter()
+
+        //TODO see all page
         /*seeAll.setOnClickListener{
             context.startActivity<ArchiveActivity>(
-                TITLE_KEY to listTitle.text.toString(),
-                TYPE_KEY to type
+
             )
         }*/
 
@@ -68,17 +70,17 @@ class MovieView(
             addAll(data.toMovieItems())
         }
 
-        val itemAdapter = RecyclerItemMovieAdapterHome(context,data)
-
         movieRecycleView.apply {
-            adapter = itemAdapter
+            adapter = groupAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }
 
-        //TODO cannot cast item to movieItem
-        /*groupAdapter.setOnItemClickListener { item, view ->
-            item as movieItem
-        }*/
+        groupAdapter.setOnItemClickListener { item, view ->
+            (item as? MovieItemRecyclerView)?.let {
+                val actionDetailHome = HomeFragmentDirections.sendMovieId(it.movieItem.id)
+                Navigation.findNavController(view).navigate(actionDetailHome)
+            }
+        }
 
     }
 
