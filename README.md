@@ -51,7 +51,7 @@ Model-View-ViewModel
 
 <p align = "left" >
   <img width="250" height="500" src="images/MovieDetail1.PNG">
-  <img width="250" height="500"  src="images/MovieDetail2.PNG"> 
+  <img width="250" height="500"  src="images/MoveiDetail2.PNG"> 
   <img width="250" height="500" src="images/TvShowDetail.PNG"> 
 </p>
 
