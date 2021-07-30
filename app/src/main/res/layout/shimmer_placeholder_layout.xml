@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragment.MovieDetailFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/backdrop_image"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:adjustViewBounds="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@color/colorGrey" />
+
+        <View
+            android:id="@+id/poster_image"
+            android:layout_width="180dp"
+            android:layout_height="230dp"
+            android:layout_marginStart="@dimen/standard_margin"
+            android:background="@color/gray100"
+            app:layout_constraintBottom_toBottomOf="@+id/backdrop_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backdrop_image"
+            />
+
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="-25dp"
+            android:layout_marginEnd="@dimen/large_margin"
+            android:background="@drawable/bg_play_button"
+            android:backgroundTint="@color/gray100"
+            app:layout_constraintBottom_toBottomOf="@+id/backdrop_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backdrop_image" />
+
+        <View
+            android:id="@+id/tagline"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="@dimen/small_margin"
+            app:layout_constraintBottom_toTopOf="@+id/poster_image"
+            app:layout_constraintStart_toStartOf="@+id/poster_image"
+            android:text="@string/tag_line_test_text"
+            android:background="@color/gray100"/>
+
+        <View
+            android:id="@+id/textView_vote_avg"
+            android:layout_width="70dp"
+            android:layout_height="20sp"
+            android:layout_marginStart="@dimen/standard_margin"
+            android:layout_marginTop="35dp"
+            android:background="@color/gray1"
+            app:layout_constraintStart_toEndOf="@+id/poster_image"
+            app:layout_constraintTop_toBottomOf="@+id/backdrop_image" />
+
+        <View
+            android:id="@+id/vote_average"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:background="@color/gray1"
+            android:layout_marginStart="@dimen/small_margin"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_vote_avg"
+            app:layout_constraintStart_toEndOf="@+id/textView_vote_avg"
+            app:layout_constraintTop_toTopOf="@+id/textView_vote_avg" />
+
+
+        <View
+            android:id="@+id/textView_original_language"
+            android:layout_width="70dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="@dimen/standard_margin"
+            android:background="@color/gray1"
+            app:layout_constraintBottom_toBottomOf="@+id/poster_image"
+            app:layout_constraintStart_toEndOf="@+id/poster_image"
+            app:layout_constraintTop_toBottomOf="@+id/textView_vote_avg"
+            app:layout_constraintVertical_bias="0.32999998" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/original_language"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:background="@color/gray1"
+            android:layout_marginStart="@dimen/small_margin"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_original_language"
+            app:layout_constraintStart_toEndOf="@+id/textView_original_language"
+            app:layout_constraintTop_toTopOf="@+id/textView_original_language" />
+
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/number_of_seaons"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:background="@color/gray1"
+            android:layout_marginStart="@dimen/small_margin"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_runtime"
+            app:layout_constraintStart_toEndOf="@+id/textView_runtime"
+            app:layout_constraintTop_toTopOf="@+id/textView_runtime" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView_runtime"
+            android:layout_width="70dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="@dimen/standard_margin"
+            android:background="@color/gray1"
+            app:layout_constraintBottom_toBottomOf="@+id/poster_image"
+            app:layout_constraintStart_toEndOf="@+id/poster_image" />
+
+
+
+        <View
+            android:id="@+id/appCompatTextView_genre"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_margin="@dimen/standard_margin"
+            android:background="@color/gray1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/poster_image" />
+
+
+        <View
+            android:id="@+id/genre_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:background="@color/gray1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView_genre"
+            android:layout_margin="@dimen/standard_margin"
+            />
+
+        <View
+            android:id="@+id/appCompatTextView_overview"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_margin="@dimen/standard_margin"
+            android:background="@color/gray1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/genre_recycler_view" />
+
+
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_margin="@dimen/standard_margin"
+            android:background="@color/gray1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView_overview"/>
+        <View
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_margin="@dimen/standard_margin"
+            android:background="@color/gray1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line1"/>
+        <View
+            android:id="@+id/line3"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_margin="@dimen/standard_margin"
+            android:background="@color/gray1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line2"/>
+
+        <View
+            android:id="@+id/line4"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_margin="@dimen/standard_margin"
+            android:background="@color/gray1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line3"/>
+
+        <View
+            android:id="@+id/line5"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_margin="@dimen/standard_margin"
+            android:background="@color/gray1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line4" />
+
+
+        <View
+            android:id="@+id/appCompatTextView_cast"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_margin="@dimen/standard_margin"
+            android:background="@color/gray1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line5" />
+
+        <View
+            android:id="@+id/cast_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="@dimen/standard_margin"
+            tools:background="@color/gray1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appCompatTextView_cast"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

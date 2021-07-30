@@ -1,0 +1,2 @@
+rootProject.name = "ARMovie"
+include ':app'

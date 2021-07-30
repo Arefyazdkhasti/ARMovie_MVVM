@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="@dimen/small_margin">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/cast_image"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            tools:srcCompat="@tools:sample/avatars"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/round_outline"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cast_name"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_margin"
+        android:textColor="@color/black"
+        android:textSize="@dimen/standard_font"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/cast_image"
+        app:layout_constraintStart_toStartOf="@+id/cast_image"
+        app:layout_constraintTop_toBottomOf="@+id/cast_image"
+        app:layout_constraintVertical_bias="0.19999999"
+        tools:text="Tanaz Tabatabayi"
+        android:textAlignment="center"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cast_character"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_margin"
+        android:textColor="@color/black"
+        android:textSize="@dimen/small_font"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/cast_image"
+        app:layout_constraintStart_toStartOf="@+id/cast_image"
+        app:layout_constraintTop_toBottomOf="@+id/cast_name"
+        tools:text="Tanaz Tabatabayi"
+        android:ellipsize="end"
+        android:textAlignment="center"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">ARMovie</string>
+
+    <string name="home">Home</string>
+    <string name="movie">Movie</string>
+    <string name="setting">Setting</string>
+    <string name="loading">Loading</string>
+    <string name="SeeAll">See all</string>
+    <string name="Overview">Overview</string>
+    <string name="Genre">Genre</string>
+    <string name="lorem_ipsum">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+    <string name="release_date">Release Date</string>
+    <string name="runtime">Runtime</string>
+    <string name="vote_average">Vote Average</string>
+    <string name="casts">Casts</string>
+    <string name="tag_line_test_text">tag_line_test_text</string>
+    <string name="tv_series">TV Series</string>
+    <string name="search">Search</string>
+    <string name="tv_show">Tv Show</string>
+    <string name="overView">After stealing the Tesseract during the events of “Avengers: Endgame,” an alternate version of Loki is brought to the mysterious Time Variance Authority, a bureaucratic organization that exists outside of time and space and monitors the timeline. They give Loki a choice: face being erased from existence due to being a “time variant” or help fix the timeline and stop a greater threat.</string>
+    <string name="number_of_episodes">Number of episodes</string>
+    <string name="number_of_seasons">Number of seasons</string>
+    <string name="original_language">Original Language</string>
+    <string name="seasons">Seasons</string>
+    <string name="episode_count">Episode Count:</string>
+    <string name="type_here">Type here</string>
+    <string name="search_hint">Search whole or a part of your willing Movies or TV Shows title</string>
+    <string name="include_adult">Include Adult</string>
+    <string name="include_adult_hint">Choose whether to include adult content in the results.</string>
+    <string name="birthday">Birthday</string>
+    <string name="place_of_birth">Place Of Birth</string>
+    <string name="known_for">Known For</string>
+    <string name="biography">Biography</string>
+    <string name="videos">Videos</string>
+</resources>
