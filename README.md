@@ -42,14 +42,22 @@ Model-View-ViewModel
 
 <p align = "left" >
   <img width="250" height="500" src="images/Home.PNG">
-  <img width="250" height="500"  src="images/Search.PNG"> 
-  <img width="250" height="500" src="github_images/TvShow.PNG"> 
+  <img width="250" height="500"  src="images/Search.PNG">
+  <img width="250" height="500"  src="images/SearchResult.PNG">  
+  <img width="250" height="500" src="images/TvShow.PNG"> 
 </p>
 
-### Movie, TV Show and Person Details
+### Movie and TV Show Details
 
 <p align = "left" >
-  <img width="250" height="500" src="github_images/MovieDetail1.PNG">
-  <img width="250" height="500"  src="github_images/MovieDetail2.PNG"> 
-  <img width="250" height="500" src="github_images/TvShowDetail.PNG"> 
+  <img width="250" height="500" src="images/MovieDetail1.PNG">
+  <img width="250" height="500"  src="images/MovieDetail2.PNG"> 
+  <img width="250" height="500" src="images/TvShowDetail.PNG"> 
+</p>
+
+### Cast Details
+
+<p align = "left" >
+  <img width="250" height="500" src="images/CastDetail1.PNG">
+  <img width="250" height="500"  src="images/CastDetail2.PNG"> 
 </p>
