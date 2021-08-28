@@ -1,7 +1,7 @@
 # ARMovie_MVVM
 
 ## Introduction
-This is a movei application based on the MVVM architectural pattern using [The TMDB Movie Database](https://www.themoviedb.org/).
+This is a movie application based on the MVVM architectural pattern using [The TMDB Movie Database](https://www.themoviedb.org/).
 
 ## Technologies & Architecture 
 
